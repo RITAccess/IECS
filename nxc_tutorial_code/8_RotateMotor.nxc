@@ -1,6 +1,6 @@
 task main()
 {
-  RotateMotor(OUT_AC, 50,360);
-  RotateMotor(OUT_C, 50,-360);
+  OnFwd(OUT_BC, 50);
+  Wait(5000);
 }
 
