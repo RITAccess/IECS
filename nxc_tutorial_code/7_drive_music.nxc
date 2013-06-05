@@ -1,0 +1,24 @@
+task music()
+{
+  while (true)
+  {
+    PlayTone(262,400);  Wait(500);
+    PlayTone(294,400);  Wait(500);
+    PlayTone(330,400);  Wait(500);
+    PlayTone(294,400);  Wait(500);
+  }
+}
+
+task movement()
+{
+  while(true)
+  {
+    OnFwd(OUT_AC, 75); Wait(3000);
+    OnRev(OUT_AC, 75); Wait(3000);
+  }
+}
+
+task main()
+{
+  Precedes(music, movement);
+}

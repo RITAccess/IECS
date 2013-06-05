@@ -1,0 +1,11 @@
+task main()
+{
+  long t3;
+  SetSensor(IN_1,SENSOR_TOUCH);
+  t3 = CurrentTick();
+  OnFwd(OUT_AC, 75);
+  until ((SENSOR_1 == 1) || ((CurrentTick()-t3) > 1000));
+  Off(OUT_AC);
+}
+
+

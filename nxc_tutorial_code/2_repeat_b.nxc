@@ -1,0 +1,17 @@
+#define MOVE_TIME   500
+#define TURN_TIME   360
+
+task main()
+{
+  repeat(10)
+  {
+    repeat(4)
+    {
+      OnFwd(OUT_AC, 75);
+      Wait(MOVE_TIME);
+      OnRev(OUT_C, 75);
+      Wait(TURN_TIME);
+    }
+  }
+  Off(OUT_AC);
+}

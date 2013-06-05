@@ -1,0 +1,34 @@
+mutex moveMutex;
+
+task move_square()
+{
+  while (true)
+  {
+    Acquire(moveMutex);
+    OnFwd(OUT_AC, 75); Wait(1000);
+    OnRev(OUT_C, 75); Wait(500);
+    Release(moveMutex);
+  }
+}
+
+task check_sensors()
+{
+  while (true)
+  {
+    if (SENSOR_1 == 1)
+    {
+      Acquire(moveMutex);
+      OnRev(OUT_AC, 75); Wait(500);
+      OnFwd(OUT_A, 75); Wait(500);
+      Release(moveMutex);
+    }
+  }
+}
+
+task main()
+{
+  Precedes(move_square, check_sensors);
+  SetSensorTouch(IN_1);
+}
+
+

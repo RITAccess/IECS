@@ -1,0 +1,23 @@
+/*  10 SQUARES
+
+This program make the robot run 10 squares
+
+*/
+
+#define MOVE_TIME   500     // Time for a straight move
+#define TURN_TIME   360     // Time for turning 90 degrees
+
+task main()
+{
+  repeat(10)                // Make 10 squares
+  {
+    repeat(4)
+    {
+      OnFwd(OUT_AC, 75);
+      Wait(MOVE_TIME);
+      OnRev(OUT_C, 75);
+      Wait(TURN_TIME);
+    }
+  }
+  Off(OUT_AC);         // Now turn the motors off
+}

@@ -1,0 +1,38 @@
+#define FILE_LINES 10
+
+sub CreateRandomFile(string fname, int lines){
+   byte handle;
+   string s;
+   int bytesWritten;
+   DeleteFile(fname);
+   int fsize = lines*5;
+   //create file with random data
+   if(CreateFile(fname, fsize, handle) == NO_ERR) {
+      int n;
+      repeat(FILE_LINES) {
+         int n = Random(0xFF);
+         s = NumToStr(n);
+         WriteLnString(handle,s,bytesWritten);
+      }
+      CloseFile(handle);
+   }
+}
+
+task main(){
+   byte handle;
+   int fsize;
+   string buf;
+   bool eof = false;
+   CreateRandomFile("rand.txt",FILE_LINES);
+   if(OpenFileRead("rand.txt", fsize, handle) == NO_ERR) {
+     TextOut(10,LCD_LINE2,"Filesize:");
+     NumOut(65,LCD_LINE2,fsize);
+     Wait(600);
+     until (eof == true){   // read the text file till the end
+         if(ReadLnString(handle,buf) != NO_ERR) eof = true;
+         TextOut(20,LCD_LINE3,buf);
+         Wait(500);
+     }
+   }
+   CloseFile(handle);
+}

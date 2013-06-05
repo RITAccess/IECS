@@ -1,0 +1,33 @@
+#define SPEED 50
+
+task check_sensors()
+{
+  while (true)
+  {
+    if (SENSOR_1 == 1)
+    {
+      OnRev(OUT_AC, SPEED);
+      Wait(500);
+      OnFwd(OUT_A, SPEED);
+      Wait(850);
+      OnFwd(OUT_C, SPEED);
+    }
+  }
+}
+
+task submain()
+{
+  while (true)
+  {
+    OnFwd(OUT_AC, SPEED); Wait(1000);
+    OnRev(OUT_C, SPEED); Wait(500);
+  }
+}
+
+task main()
+{
+  SetSensor(IN_1,SENSOR_TOUCH);
+  Precedes(check_sensors, submain);
+}
+
+

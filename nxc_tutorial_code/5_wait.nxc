@@ -1,0 +1,7 @@
+task main()
+{
+  SetSensor(IN_1,SENSOR_TOUCH);
+  OnFwd(OUT_AC, 75);
+  until (SENSOR_1 == 1);
+  Off(OUT_AC);
+}
