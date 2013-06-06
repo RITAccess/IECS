@@ -1,0 +1,10 @@
+task main(){
+	SetSensorLowspeed(S1);
+	ResetSensor(S1);
+	while(true){
+		ResetScreen();
+		NumOut(0,0, SensorUS(S1));
+		Wait(1000);
+	}
+
+}

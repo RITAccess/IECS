@@ -1,0 +1,15 @@
+task main(){
+	SetSensorTouch(S1);
+	SetSensorSound(S2);
+	while (true){
+		char x = Sensor(S2);
+		if (x > 8){
+			OnFwd(OUT_BC, x);
+		}else{
+			Off(OUT_BC);
+		}
+		Wait(50);
+	}
+		
+}
+
