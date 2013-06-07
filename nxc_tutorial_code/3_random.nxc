@@ -4,7 +4,7 @@ task main()
 {
   while(true)
   {
-    move_time = Random(600);
+    move_time = Random(600); // random number between 0 and 600
     turn_time = Random(400);
     OnFwd(OUT_AC, 75);
     Wait(move_time);
