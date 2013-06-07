@@ -1,8 +1,39 @@
-task main(){
+#define SPEED_NORMAL 45
+#define SPEED_TURN 10
+#define THRESHOLD 40
+
+#define TURN_LEFT 0
+#define TURN_RIGHT 1
+#define TURN_NONE 2
+
+//What to do when it reaches an intersection.
+int turnChoice = TURN_NONE;
+
+//flag for the LineFollow task to stop.
+//when false, stop the task.
+bool continueLineFollow;
+
+//call with one of TURN_*
+void SetTurnChoice(int choice){
+	turnChoice = choice;
+}
+
+void WaitUntilBlack(int port){
+	bool black = Sensor(port) < THRESHOLD;
+	while (!black){
+		black  = Sensor(port) < THRESHOLD;
+		Wait(50);
+	}
+}
+
+
+
+task lineFollow(){
 	SetSensorLight(S3);//right
 	SetSensorLight(S4);//left
-
-	while (true){
+	//a right, c left
+	OnFwd(OUT_AC, SPEED_NORMAL);
+	while (continueLineFollow){
 		ResetScreen();
 		int right = Sensor(S3);
 		int left = Sensor(S4);
@@ -11,6 +42,66 @@ task main(){
 
 		NumOut(0,LCD_LINE2, right);
 
-		Wait(250);
+		bool leftOnLine = left < THRESHOLD;
+		bool rightOnLine = right < THRESHOLD;
+
+		if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){
+			Wait(400);
+			if (turnChoice == TURN_LEFT){
+				OnRev(OUT_C, SPEED_NORMAL - 10 );
+				OnFwd(OUT_A, SPEED_NORMAL + 15);
+				while (leftOnLine || rightOnLine){
+					Wait(50);
+					leftOnLine = Sensor(S4) < THRESHOLD;
+					rightOnLine = Sensor(S3) < THRESHOLD;
+				}
+				WaitUntilBlack(S3);
+				WaitUntilBlack(S4);
+				WaitUntilBlack(S3);
+			}else if (turnChoice == TURN_RIGHT){
+				OnRev(OUT_A, SPEED_NORMAL - 10 );
+				OnFwd(OUT_C, SPEED_NORMAL + 15);
+				while (leftOnLine || rightOnLine){
+					Wait(50);
+					leftOnLine = Sensor(S4) < THRESHOLD;
+					rightOnLine = Sensor(S3) < THRESHOLD;
+				}
+				WaitUntilBlack(S4);
+				WaitUntilBlack(S3);
+				WaitUntilBlack(S4);
+			}
+		}else if (leftOnLine){
+			OnFwd(OUT_C, SPEED_TURN);
+			while (Sensor(S4) < THRESHOLD && Sensor(S3) > THRESHOLD){
+				Wait(50);
+			}
+		}else if (rightOnLine){
+			OnFwd(OUT_A, SPEED_TURN);
+			while (Sensor(S3) < THRESHOLD && Sensor(S4) > THRESHOLD){
+				Wait(50);
+			}
+		}
+		OnFwd(OUT_AC, SPEED_NORMAL);
 	}
+}
+
+
+void StartLineFollow(){
+	continueLineFollow = true;
+	start lineFollow;
+}
+
+//this function forces the thread to wait 455 ms to ensure that the lineFollow task completely terminates.
+void StopLineFollow(){
+	continueLineFollow = false;
+	Wait(455);
+}
+
+task main(){
+	StartLineFollow();
+	Wait(8000);
+	SetTurnChoice(TURN_RIGHT);
+	StopLineFollow();
+	OnFwd(OUT_AC, 80);
+	Wait(15000);
 }
