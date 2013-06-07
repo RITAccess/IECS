@@ -1,12 +1,12 @@
-#define MOVE_TIME   500
-#define TURN_TIME   360
+#define MOVE_TIME   500 //variables
+#define TURN_TIME   360 
 
 task main()
 {
-  repeat(4)
+  repeat(4)        //repeat the code inside the scope below 4 times
   {
     OnFwd(OUT_AC, 75);
-    Wait(MOVE_TIME);
+    Wait(MOVE_TIME); //variable being used in function
     OnRev(OUT_C, 75);
     Wait(TURN_TIME);
   }
