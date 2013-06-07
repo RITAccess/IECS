@@ -1,10 +1,10 @@
 task main()
 {
-  OnFwd(OUT_A, 75);
+  OnFwd(OUT_A, 75); // move forward at a speed of 75 cm/h
   OnFwd(OUT_B, 75);
-  Wait(4000);
-  OnRev(OUT_AB, 75);
-  Wait(4000);
-  Off(OUT_AB);
+  Wait(4000);               // do the previous code for 4 seconds
+  OnRev(OUT_AB, 75);  // go backwards at 75 
+  Wait(4000);          //for 4 seconds
+  Off(OUT_AB);        //wheels turn off
 }
 
