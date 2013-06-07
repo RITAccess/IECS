@@ -101,7 +101,5 @@ task main(){
 	StartLineFollow();
 	Wait(8000);
 	SetTurnChoice(TURN_RIGHT);
-	StopLineFollow();
-	OnFwd(OUT_AC, 80);
-	Wait(15000);
+
 }
