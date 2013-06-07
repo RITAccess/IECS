@@ -1,0 +1,16 @@
+task main(){
+	SetSensorLight(S3);//right
+	SetSensorLight(S4);//left
+
+	while (true){
+		ResetScreen();
+		int right = Sensor(S3);
+		int left = Sensor(S4);
+
+		NumOut(0,LCD_LINE1, left);
+
+		NumOut(0,LCD_LINE2, right);
+
+		Wait(250);
+	}
+}
