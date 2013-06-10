@@ -49,15 +49,6 @@ void WaitUntilBlack(int port){
 	}
 }
 
-//Helper Function.
-//Forces the current thread to wait until a turn has been completed.
-void WaitUntilTurn(){
-	hasMadeTurn = false;
-	while (!hasMadeTurn){
-		Wait(50);
-	}
-}
-
 task lineFollow(){
 	hasMadeTurn = false;
 	SetSensorLight(S3);//right
@@ -150,6 +141,8 @@ task lineFollow(){
 	}
 }
 
+//Client functions
+
 //Starts the line following task.
 //This controls the motors on OUT_AC (left = C, right = A) so once this is running you should not interact with those motors
 //directly. Otherwise it immediately returns and you can continue running code while the line following task runs in
@@ -164,6 +157,41 @@ void StartLineFollow(){
 void StopLineFollow(){
 	continueLineFollow = false;
 	Wait(455);
+}
+
+
+//Helper Function.
+//Forces the current thread to wait until a turn has been completed.
+void WaitUntilTurn(){
+	hasMadeTurn = false;
+	while (!hasMadeTurn){
+		Wait(50);
+	}
+}
+
+//turn right at future intersections.
+void TurnRight(){
+	SetTurnChoice(TURN_RIGHT);
+}
+
+//turn left at future intersections.
+void TurnLeft(){
+	SetTurnChoice(TURN_LEFT);
+}
+
+//go straight at future intersections.
+void GoStraight(){
+	SetTurnChoice(TURN_RIGHT);
+}
+
+//Tell the robot that future intersections are four way intersections
+void FourWayIntersection(){
+	SetIntersectionType(CROSS_INTERSECTION);
+}
+
+//Tell the robot that future intersections are T intersections
+void TIntersection(){
+	SetIntersectionType(T_INTERSECTION);
 }
 
 task main(){
