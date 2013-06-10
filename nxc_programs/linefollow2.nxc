@@ -1,13 +1,23 @@
 #define SPEED_NORMAL 45
 #define SPEED_TURN 10
-#define THRESHOLD 40
+#define THRESHOLD 50
 
 #define TURN_LEFT 0
 #define TURN_RIGHT 1
 #define TURN_NONE 2
 
+#define T_INTERSECTION 0
+#define CROSS_INTERSECTION 1
+
 //What to do when it reaches an intersection.
 int turnChoice = TURN_NONE;
+
+//What type of intersection is coming up ahead.
+//Must be set correctly to allow proper turning!
+int intersectionType = CROSS_INTERSECTION;
+
+//This flag is set to true whenever a turn is made.
+bool hasMadeTurn;
 
 //flag for the LineFollow task to stop.
 //when false, stop the task.
@@ -18,6 +28,10 @@ void SetTurnChoice(int choice){
 	turnChoice = choice;
 }
 
+void SetIntersectionType(int type){
+	intersectionType = type;
+}
+
 void WaitUntilBlack(int port){
 	bool black = Sensor(port) < THRESHOLD;
 	while (!black){
@@ -26,9 +40,15 @@ void WaitUntilBlack(int port){
 	}
 }
 
-
+void WaitUntilTurn(){
+	hasMadeTurn = false;
+	while (!hasMadeTurn){
+		Wait(50);
+	}
+}
 
 task lineFollow(){
+	hasMadeTurn = false;
 	SetSensorLight(S3);//right
 	SetSensorLight(S4);//left
 	//a right, c left
@@ -45,7 +65,7 @@ task lineFollow(){
 		bool leftOnLine = left < THRESHOLD;
 		bool rightOnLine = right < THRESHOLD;
 
-		if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){
+		if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){			
 			Wait(400);
 			if (turnChoice == TURN_LEFT){
 				OnRev(OUT_C, SPEED_NORMAL - 10 );
@@ -55,9 +75,15 @@ task lineFollow(){
 					leftOnLine = Sensor(S4) < THRESHOLD;
 					rightOnLine = Sensor(S3) < THRESHOLD;
 				}
-				WaitUntilBlack(S3);
-				WaitUntilBlack(S4);
-				WaitUntilBlack(S3);
+				if (intersectionType == CROSS_INTERSECTION){
+					WaitUntilBlack(S3);
+					WaitUntilBlack(S4);
+					WaitUntilBlack(S3);
+				}else if (intersectionType == T_INTERSECTION){
+					WaitUntilBlack(S4);
+					WaitUntilBlack(S3);
+				}
+				hasMadeTurn = true;
 			}else if (turnChoice == TURN_RIGHT){
 				OnRev(OUT_A, SPEED_NORMAL - 10 );
 				OnFwd(OUT_C, SPEED_NORMAL + 15);
@@ -66,9 +92,15 @@ task lineFollow(){
 					leftOnLine = Sensor(S4) < THRESHOLD;
 					rightOnLine = Sensor(S3) < THRESHOLD;
 				}
-				WaitUntilBlack(S4);
-				WaitUntilBlack(S3);
-				WaitUntilBlack(S4);
+				if (intersectionType == CROSS_INTERSECTION){
+					WaitUntilBlack(S4);
+					WaitUntilBlack(S3);
+					WaitUntilBlack(S4);
+				}else if (intersectionType == T_INTERSECTION){
+					WaitUntilBlack(S3);
+					WaitUntilBlack(S4);
+				}
+				hasMadeTurn = true;
 			}
 		}else if (leftOnLine){
 			OnFwd(OUT_C, SPEED_TURN);
@@ -98,8 +130,14 @@ void StopLineFollow(){
 }
 
 task main(){
+	SetTurnChoice(TURN_LEFT);
+	SetIntersectionType(T_INTERSECTION);
 	StartLineFollow();
-	Wait(8000);
+	WaitUntilTurn();
+	WaitUntilTurn();
+	SetIntersectionType(CROSS_INTERSECTION);
+	WaitUntilTurn();
 	SetTurnChoice(TURN_RIGHT);
-
+	WaitUntilTurn();
+	StopLineFollow();
 }
