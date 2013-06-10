@@ -23,15 +23,24 @@ bool hasMadeTurn;
 //when false, stop the task.
 bool continueLineFollow;
 
+//Set the line following routine to go straight or turn left or right when it reaches an intersection.
+//The intersection type must be properly set for the robot to be able to turn properly.
 //call with one of TURN_*
 void SetTurnChoice(int choice){
 	turnChoice = choice;
 }
 
+//Set the the pattern of the next intersection. 
+//This must be set properly to allow the robot to turn correctly.
+//Only supports T and 4-way intersections at the moment.
+//Cal with *_INTERSECTION
 void SetIntersectionType(int type){
 	intersectionType = type;
 }
 
+//Helper function.
+//Forces the current thread to wait until the sensor at the given port detects
+//that it is on a black line.
 void WaitUntilBlack(int port){
 	bool black = Sensor(port) < THRESHOLD;
 	while (!black){
@@ -40,6 +49,8 @@ void WaitUntilBlack(int port){
 	}
 }
 
+//Helper Function.
+//Forces the current thread to wait until a turn has been completed.
 void WaitUntilTurn(){
 	hasMadeTurn = false;
 	while (!hasMadeTurn){
@@ -117,13 +128,17 @@ task lineFollow(){
 	}
 }
 
-
+//Starts the line following task.
+//This controls the motors on OUT_AC (left = C, right = A) so once this is running you should not interact with those motors
+//directly. Otherwise it immediately returns and you can continue running code while the line following task runs in
+//another thread.
 void StartLineFollow(){
 	continueLineFollow = true;
 	start lineFollow;
 }
 
-//this function forces the thread to wait 455 ms to ensure that the lineFollow task completely terminates.
+//This function ends the line following task.
+//It forces the current thread to wait 455 milliseconds so that the task terminates before it returns.
 void StopLineFollow(){
 	continueLineFollow = false;
 	Wait(455);
