@@ -181,7 +181,7 @@ void TurnLeft(){
 
 //go straight at the next intersection
 void GoStraight(){
-	SetTurnChoice(TURN_STRAIGHT);
+	SetTurnChoice(TURN_NONE);
 }
 
 //Tell the robot that the next intersection is a four-way intersection
