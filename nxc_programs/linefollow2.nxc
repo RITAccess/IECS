@@ -169,22 +169,22 @@ void WaitUntilTurn(){
 	}
 }
 
-//turn right at future intersections.
+//turn right at the next intersection
 void TurnRight(){
 	SetTurnChoice(TURN_RIGHT);
 }
 
-//turn left at future intersections.
+//turn left at the next intersection
 void TurnLeft(){
 	SetTurnChoice(TURN_LEFT);
 }
 
-//go straight at future intersections.
+//go straight at the next intersection
 void GoStraight(){
-	SetTurnChoice(TURN_RIGHT);
+	SetTurnChoice(TURN_STRAIGHT);
 }
 
-//Tell the robot that future intersections are four way intersections
+//Tell the robot that the next intersection is a four-way intersection
 void FourWayIntersection(){
 	SetIntersectionType(CROSS_INTERSECTION);
 }
@@ -195,16 +195,13 @@ void TIntersection(){
 }
 
 task main(){
-	SetTurnChoice(TURN_RIGHT);
-	SetIntersectionType(CROSS_INTERSECTION);
 	StartLineFollow();
+	TurnRight();
+	FourWayIntersection();
 	WaitUntilTurn();
-	SetTurnChoice(TURN_LEFT);
+	TurnLeft();
 	WaitUntilTurn();
-	SetTurnChoice(TURN_NONE);
-	WaitUntilTurn();
-	SetTurnChoice(TURN_LEFT);
-	SetIntersectionType(CROSS_INTERSECTION);
+	GoStraight();
 	WaitUntilTurn();
 	StopLineFollow();
 }
