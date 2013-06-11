@@ -196,12 +196,18 @@ void TIntersection(){
 
 task main(){
 	StartLineFollow();
-	TurnRight();
-	FourWayIntersection();
-	WaitUntilTurn();
 	TurnLeft();
+	FourWayIntersection();
 	WaitUntilTurn();
 	GoStraight();
 	WaitUntilTurn();
+	TurnLeft();
+	WaitUntilTurn();
+	WaitUntilTurn();
+	TurnRight();
+	WaitUntilTurn();
+	WaitUntilTurn();
+	Wait(10000);
 	StopLineFollow();
+	
 }
