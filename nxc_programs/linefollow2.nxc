@@ -9,6 +9,8 @@
 #define T_INTERSECTION 0
 #define CROSS_INTERSECTION 1
 
+mutex endlinefollowmutex;
+
 //What to do when it reaches an intersection.
 int turnChoice = TURN_NONE;
 
@@ -124,22 +126,28 @@ task lineFollow(){
 
 		}else if (rightOnLine && leftOnLine && turnChoice == TURN_NONE && continueLineFollow){
 			PlayTone(1000, 1000);
-			while (Sensor(S4) < THRESHOLD && Sensor(S3) < THRESHOLD){
+			while (Sensor(S4) < THRESHOLD && Sensor(S3) < THRESHOLD && continueLineFollow){
 				Wait(50);
 			}
 			hasMadeTurn = true;
 		}else if (leftOnLine && continueLineFollow){
 			OnFwd(OUT_C, SPEED_TURN);
-			while (Sensor(S4) < THRESHOLD && Sensor(S3) > THRESHOLD){
+			while (Sensor(S4) < THRESHOLD && Sensor(S3) > THRESHOLD && continueLineFollow){
 				Wait(50);
 			}
 		}else if (rightOnLine && continueLineFollow){
 			OnFwd(OUT_A, SPEED_TURN);
-			while (Sensor(S3) < THRESHOLD && Sensor(S4) > THRESHOLD){
+			while (Sensor(S3) < THRESHOLD && Sensor(S4) > THRESHOLD && continueLineFollow){
 				Wait(50);
 			}
 		}
-		OnFwd(OUT_AC, SPEED_NORMAL);
+		Acquire(endlinefollowmutex);
+		if (continueLineFollow){
+			
+			OnFwd(OUT_AC, SPEED_NORMAL);
+	
+		}
+		Release(endlinefollowmutex);
 	}
 }
 
@@ -157,8 +165,10 @@ void StartLineFollow(){
 //This function ends the line following task.
 //It forces the current thread to wait 455 milliseconds so that the task terminates before it returns.
 void StopLineFollow(){
+	Acquire(endlinefollowmutex);
 	continueLineFollow = false;
-	Wait(455);
+	Release(endlinefollowmutex);
+	Off(OUT_AC);
 }
 
 
@@ -194,22 +204,4 @@ void FourWayIntersection(){
 //Tell the robot that future intersections are T intersections
 void TIntersection(){
 	SetIntersectionType(T_INTERSECTION);
-}
-
-task main(){
-	StartLineFollow();
-	TurnLeft();
-	FourWayIntersection();
-	WaitUntilTurn();
-	GoStraight();
-	WaitUntilTurn();
-	TurnLeft();
-	WaitUntilTurn();
-	WaitUntilTurn();
-	TurnRight();
-	WaitUntilTurn();
-	WaitUntilTurn();
-	Wait(10000);
-	StopLineFollow();
-	
 }
