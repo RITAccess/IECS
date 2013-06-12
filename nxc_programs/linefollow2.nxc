@@ -1,5 +1,5 @@
 #define SPEED_NORMAL 45
-#define SPEED_TURN 10
+#define SPEED_TURN 5
 #define THRESHOLD 52
 
 #define TURN_LEFT 0
@@ -62,12 +62,13 @@ task lineFollow(){
 
 		NumOut(0,LCD_LINE1, left);
 
-		NumOut(0,LCD_LINE2, right);
+		NumOut(64, LCD_LINE1, right);
 
 		bool leftOnLine = left < THRESHOLD;
 		bool rightOnLine = right < THRESHOLD;
 
-		if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){			
+		if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){	
+			PlayTone(500, 1000);	
 			Wait(700);
 			if (turnChoice == TURN_LEFT){
 				OnRev(OUT_C, SPEED_NORMAL - 10 );
@@ -122,6 +123,7 @@ task lineFollow(){
 			}
 
 		}else if (rightOnLine && leftOnLine && turnChoice == TURN_NONE && continueLineFollow){
+			PlayTone(1000, 1000);
 			while (Sensor(S4) < THRESHOLD && Sensor(S3) < THRESHOLD){
 				Wait(50);
 			}
