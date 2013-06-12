@@ -18,6 +18,9 @@ int turnChoice = TURN_NONE;
 //Must be set correctly to allow proper turning!
 int intersectionType = CROSS_INTERSECTION;
 
+//This flag tells the linefollow task to turn the robot around.
+bool turnAround;
+
 //This flag is set to true whenever a turn is made.
 bool hasMadeTurn;
 
@@ -53,6 +56,7 @@ void WaitUntilBlack(int port){
 
 task lineFollow(){
 	hasMadeTurn = false;
+	turnAround = false;
 	SetSensorLight(S3);//right
 	SetSensorLight(S4);//left
 	//a right, c left
@@ -69,7 +73,16 @@ task lineFollow(){
 		bool leftOnLine = left < THRESHOLD;
 		bool rightOnLine = right < THRESHOLD;
 
-		if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){	
+		if (turnAround && continueLineFollow){
+			OnRev(OUT_C, SPEED_NORMAL);
+			OnRev(OUT_A, SPEED_NORMAL);
+			Wait(500);
+			OnFwd(OUT_A, SPEED_NORMAL);
+			WaitUntilBlack(S3);
+			WaitUntilBlack(S4);
+			WaitUntilBlack(S3);
+			turnAround = false;
+		}else if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){	
 			PlayTone(500, 1000);	
 			Wait(700);
 			if (turnChoice == TURN_LEFT){
@@ -181,6 +194,13 @@ void WaitUntilTurn(){
 	}
 }
 
+//Forces the curren thread to wait until the selected sensor is pressed
+void WaitUntilPress(int sensor){
+	while(!SensorBoolean(sensor)){
+		Wait(25);
+	}
+}
+
 //turn right at the next intersection
 void TurnRight(){
 	SetTurnChoice(TURN_RIGHT);
@@ -194,6 +214,14 @@ void TurnLeft(){
 //go straight at the next intersection
 void GoStraight(){
 	SetTurnChoice(TURN_NONE);
+}
+
+//turns the robot around and blocks until finished
+void TurnAround(){
+	turnAround = true;
+	while (turnAround){
+		Wait(25);
+	}
 }
 
 //Tell the robot that the next intersection is a four-way intersection
