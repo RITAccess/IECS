@@ -1,3 +1,4 @@
+
 #define SPEED_NORMAL 45
 #define SPEED_TURN 5
 #define THRESHOLD 52
@@ -60,10 +61,20 @@ void WaitUntilBlack(int port){
 	}
 }
 
+//This function ends the line following task.
+//It forces the current thread to wait 455 milliseconds so that the task terminates before it returns.
+void StopLineFollow(){
+	Acquire(endlinefollowmutex);
+	continueLineFollow = false;
+	Release(endlinefollowmutex);
+	Off(OUT_AC);
+}
+
 //Play a tone if there is an obstacle within 10 cm (approx) of the robot.
 void CheckForObstacle(){
 	if(SensorUS(S1) < 10){
-		PlayTone(100, 1000);
+		StopLineFollow();
+		//PlayTone(100, 1000);
 	}
 }
 
@@ -194,21 +205,13 @@ void StartLineFollow(){
 	start lineFollow;
 }
 
-//This function ends the line following task.
-//It forces the current thread to wait 455 milliseconds so that the task terminates before it returns.
-void StopLineFollow(){
-	Acquire(endlinefollowmutex);
-	continueLineFollow = false;
-	Release(endlinefollowmutex);
-	Off(OUT_AC);
-}
-
 
 //Forces the curren thread to wait until the touch sensor is pressed
 void WaitUntilPress(){
 	
 	while(!SensorBoolean(S2)){
 		Wait(25);
+		CheckForObstacle();
 	}
 	
 	PlayTone(1000, 500);
