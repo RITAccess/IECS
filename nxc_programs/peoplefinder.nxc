@@ -1,10 +1,8 @@
 #include "linefollow2.nxc"
 
 task main(){
-	SetSensorTouch(S2);
 	StartLineFollow();
 	GoStraight();
-	FourWayIntersection();
 	WaitUntilTurn();
 	WaitUntilPress(S2);
 	TurnAround();
@@ -12,13 +10,22 @@ task main(){
 	WaitUntilTurn();
 	GoStraight();
 	WaitUntilTurn();
-	TurnLeft();
+	TurnRight();
 	WaitUntilTurn();
+	TurnRight();
+	WaitUntilTurn();
+	GoStraight();
+	WaitUntilTurn();
+	TurnRight();
 	WaitUntilTurn();
 	TurnRight();
 	WaitUntilTurn();
 	WaitUntilPress(S2);
 	TurnAround();
+	GoStraight();
 	WaitUntilTurn();
-	Wait(5000);
+	WaitUntilPress(S2);
+	TurnAround();
+	TurnLeft();
+	WaitUntilTurn();
 }

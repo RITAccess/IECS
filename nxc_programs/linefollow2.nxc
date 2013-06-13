@@ -54,14 +54,26 @@ void WaitUntilBlack(int port){
 	}
 }
 
+void CheckForObstacle(){
+	if(SensorUS(S1) < 10){
+		PlayTone(100, 1000);
+	}
+}
+
 task lineFollow(){
 	hasMadeTurn = false;
 	turnAround = false;
+	SetSensorTouch(S2);
+	SetSensorLowspeed(S1);
+	ResetSensor(S1);
 	SetSensorLight(S3);//right
 	SetSensorLight(S4);//left
 	//a right, c left
 	OnFwd(OUT_AC, SPEED_NORMAL);
 	while (continueLineFollow){
+
+		CheckForObstacle();
+		
 		ResetScreen();
 		int right = Sensor(S3);
 		int left = Sensor(S4);
@@ -83,7 +95,7 @@ task lineFollow(){
 			WaitUntilBlack(S3);
 			turnAround = false;
 		}else if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){	
-			PlayTone(500, 1000);	
+			//PlayTone(500, 1000);	
 			Wait(700);
 			if (turnChoice == TURN_LEFT){
 				OnRev(OUT_C, SPEED_NORMAL - 10 );
@@ -138,7 +150,7 @@ task lineFollow(){
 			}
 
 		}else if (rightOnLine && leftOnLine && turnChoice == TURN_NONE && continueLineFollow){
-			PlayTone(1000, 1000);
+			//PlayTone(1000, 1000);
 			while (Sensor(S4) < THRESHOLD && Sensor(S3) < THRESHOLD && continueLineFollow){
 				Wait(50);
 			}
