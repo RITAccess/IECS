@@ -6,6 +6,12 @@
 #define TURN_RIGHT 1
 #define TURN_NONE 2
 
+//These constants deal with handling different types of intersections.
+//The map we provide only contains cross-intersections (4-way)
+//so students don't need to instruct the robot what intersections we come to.
+
+//The code provides some basic support for T-intersections if you want to make your own map,
+//but it has limitations. Refer to TIntersection() and FourWayIntersection() if you really want T-intersections.
 #define T_INTERSECTION 0
 #define CROSS_INTERSECTION 1
 
@@ -38,7 +44,7 @@ void SetTurnChoice(int choice){
 //Set the the pattern of the next intersection. 
 //This must be set properly to allow the robot to turn correctly.
 //Only supports T and 4-way intersections at the moment.
-//Cal with *_INTERSECTION
+//Call with *_INTERSECTION
 void SetIntersectionType(int type){
 	intersectionType = type;
 }
@@ -54,10 +60,9 @@ void WaitUntilBlack(int port){
 	}
 }
 
-
-
+//Play a tone if there is an obstacle within 10 cm (approx) of the robot.
 void CheckForObstacle(){
-	if(SensorUS(S1) < 30){
+	if(SensorUS(S1) < 10){
 		PlayTone(100, 1000);
 	}
 }
@@ -199,10 +204,10 @@ void StopLineFollow(){
 }
 
 
-//Forces the curren thread to wait until the selected sensor is pressed
-void WaitUntilPress(int sensor){
+//Forces the curren thread to wait until the touch sensor is pressed
+void WaitUntilPress(){
 	
-	while(!SensorBoolean(sensor)){
+	while(!SensorBoolean(S2)){
 		Wait(25);
 	}
 	
@@ -210,7 +215,7 @@ void WaitUntilPress(int sensor){
 }
 
 //Helper Function.
-//Forces the current thread to wait until a turn has been completed.
+//Forces the current thread to wait until a turn has been completed.o	TurnRightAndReturn()- Same as above, but the function returns immediately instead of waiting until the turn is made.
 void WaitUntilTurn(){
 	hasMadeTurn = false;
 	while (!hasMadeTurn){
