@@ -3,7 +3,7 @@
 task main(){
 	StartLineFollow();
 	GoStraight();
-	WaitUntilPress(S2);
+	WaitUntilPress();
 	TurnAround();
 	TurnRight();
 	GoStraight();
@@ -12,10 +12,10 @@ task main(){
 	GoStraight();
 	TurnRight();
 	TurnRight();
-	WaitUntilPress(S2);
+	WaitUntilPress();
 	TurnAround();
 	GoStraight();
-	WaitUntilPress(S2);
+	WaitUntilPress();
 	TurnAround();
 	TurnLeft();
 }
