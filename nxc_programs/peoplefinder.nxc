@@ -2,20 +2,20 @@
 
 task main(){
 	StartLineFollow();
-	GoStraightAndReturn();
+	GoStraight();
 	WaitUntilPress(S2);
 	TurnAround();
-	TurnRightAndReturn();
-	GoStraightAndReturn();
-	TurnRightAndReturn();
-	TurnRightAndReturn();
-	GoStraightAndReturn();
-	TurnRightAndReturn();
-	TurnRightAndReturn();
+	TurnRight();
+	GoStraight();
+	TurnRight();
+	TurnRight();
+	GoStraight();
+	TurnRight();
+	TurnRight();
 	WaitUntilPress(S2);
 	TurnAround();
-	GoStraightAndReturn();
+	GoStraight();
 	WaitUntilPress(S2);
 	TurnAround();
-	TurnLeftAndReturn();
+	TurnLeft();
 }
