@@ -54,6 +54,8 @@ void WaitUntilBlack(int port){
 	}
 }
 
+
+
 void CheckForObstacle(){
 	if(SensorUS(S1) < 10){
 		PlayTone(100, 1000);
@@ -197,15 +199,6 @@ void StopLineFollow(){
 }
 
 
-//Helper Function.
-//Forces the current thread to wait until a turn has been completed.
-void WaitUntilTurn(){
-	hasMadeTurn = false;
-	while (!hasMadeTurn){
-		Wait(50);
-	}
-}
-
 //Forces the curren thread to wait until the selected sensor is pressed
 void WaitUntilPress(int sensor){
 	
@@ -216,18 +209,45 @@ void WaitUntilPress(int sensor){
 	PlayTone(1000, 500);
 }
 
+//Helper Function.
+//Forces the current thread to wait until a turn has been completed.
+void WaitUntilTurn(){
+	hasMadeTurn = false;
+	while (!hasMadeTurn){
+		Wait(50);
+	}
+}
+
 //turn right at the next intersection
 void TurnRight(){
 	SetTurnChoice(TURN_RIGHT);
+	WaitUntilTurn();
 }
 
 //turn left at the next intersection
 void TurnLeft(){
 	SetTurnChoice(TURN_LEFT);
+	WaitUntilTurn();
 }
 
 //go straight at the next intersection
 void GoStraight(){
+	SetTurnChoice(TURN_NONE);
+	WaitUntilTurn();
+}
+
+//go right at the next intersection but immediately return.
+void TurnRightAndReturn(){
+	SetTurnChoice(TURN_RIGHT);
+}
+
+//turn left at the next intersection but immediately return
+void TurnLeftAndReturn(){
+	SetTurnChoice(TURN_LEFT);
+}
+
+//go straight at the next intersection but immediatelly return
+void GoStraightAndReturn(){
 	SetTurnChoice(TURN_NONE);
 }
 
