@@ -57,7 +57,7 @@ void WaitUntilBlack(int port){
 
 
 void CheckForObstacle(){
-	if(SensorUS(S1) < 10){
+	if(SensorUS(S1) < 30){
 		PlayTone(100, 1000);
 	}
 }
