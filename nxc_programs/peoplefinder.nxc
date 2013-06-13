@@ -7,7 +7,6 @@ task main(){
 	FourWayIntersection();
 	WaitUntilTurn();
 	WaitUntilPress(S2);
-	PlayTone(1000, 500);
 	TurnAround();
 	TurnRight();
 	WaitUntilTurn();
@@ -19,7 +18,6 @@ task main(){
 	TurnRight();
 	WaitUntilTurn();
 	WaitUntilPress(S2);
-	PlayTone(1500, 500);
 	TurnAround();
 	WaitUntilTurn();
 	Wait(5000);

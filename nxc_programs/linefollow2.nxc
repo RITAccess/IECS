@@ -196,9 +196,12 @@ void WaitUntilTurn(){
 
 //Forces the curren thread to wait until the selected sensor is pressed
 void WaitUntilPress(int sensor){
+	
 	while(!SensorBoolean(sensor)){
 		Wait(25);
 	}
+	
+	PlayTone(1000, 500);
 }
 
 //turn right at the next intersection
