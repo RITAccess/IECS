@@ -70,12 +70,9 @@ void StopLineFollow(){
 	Off(OUT_AC);
 }
 
-//Play a tone if there is an obstacle within 10 cm (approx) of the robot.
-void CheckForObstacle(){
-	if(SensorUS(S1) < 10){
-		StopLineFollow();
-		//PlayTone(100, 1000);
-	}
+//check if there is an obstacle within 20 cm (approx) of the robot.
+bool CheckForObstacle(){
+	return SensorUS(S1) < 20;
 }
 
 task lineFollow(){
@@ -89,8 +86,12 @@ task lineFollow(){
 	//a right, c left
 	OnFwd(OUT_AC, SPEED_NORMAL);
 	while (continueLineFollow){
+		
 
-		CheckForObstacle();
+		bool obstacle = CheckForObstacle();
+		if (obstacle){
+			PlayTone(500, 500);
+		}
 		
 		ResetScreen();
 		int right = Sensor(S3);
@@ -208,21 +209,25 @@ void StartLineFollow(){
 
 //Forces the curren thread to wait until the touch sensor is pressed
 void WaitUntilPress(){
-	
 	while(!SensorBoolean(S2)){
 		Wait(25);
-		CheckForObstacle();
 	}
-	
 	PlayTone(1000, 500);
 }
 
 //Helper Function.
-//Forces the current thread to wait until a turn has been completed.o	TurnRightAndReturn()- Same as above, but the function returns immediately instead of waiting until the turn is made.
+//Forces the current thread to wait until a turn has been completed.o
 void WaitUntilTurn(){
 	hasMadeTurn = false;
 	while (!hasMadeTurn){
 		Wait(50);
+	}
+}
+
+//Forces the current thread to wait unitl an obstacle is encountered.
+void WaitUntilObstacle(){
+	while (!CheckForObstacle()){
+		Wait(25);
 	}
 }
 
