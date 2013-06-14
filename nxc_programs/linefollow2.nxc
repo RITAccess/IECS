@@ -1,7 +1,7 @@
 
 #define SPEED_NORMAL 45
 #define SPEED_TURN 5
-#define THRESHOLD 52
+#define THRESHOLD 48
 
 #define TURN_LEFT 0
 #define TURN_RIGHT 1
@@ -111,7 +111,6 @@ task lineFollow(){
 			OnFwd(OUT_A, SPEED_NORMAL);
 			WaitUntilBlack(S3);
 			WaitUntilBlack(S4);
-			WaitUntilBlack(S3);
 			turnAround = false;
 		}else if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){	
 			//PlayTone(500, 1000);	
@@ -270,6 +269,7 @@ void TurnAround(){
 	while (turnAround){
 		Wait(25);
 	}
+	Wait(1000);
 }
 
 //Tell the robot that the next intersection is a four-way intersection
