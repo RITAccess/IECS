@@ -1,0 +1,27 @@
+/* Avoidance.nxc */
+
+// Include utilities for motors and
+// sensors
+#include "MotorUtilities.nxc"
+#include "SensorUtilities.nxc"
+
+// Any defines you need
+
+// The entry point for your program
+task main()
+{
+   // Configure the ultrasonic sensor
+
+   // Initialize variables for storing
+   // sensor values
+
+   // In a continuous loop
+
+      // Read sensor values
+
+      // If we see something, turn until
+      // we don't anymore
+
+      // Otherwise, move forward
+      
+}
