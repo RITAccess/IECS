@@ -14,7 +14,7 @@
 task main()
 {
    // Move the A motor forward for 720 degrees
-   RotateMotors(MOTOR_AC, POWER, DEGREES);
+   RotateMotors(MOTOR_AC, POWER, DEGREES, 0);
 
    // Turn one direction
    RotateMotors(MOTOR_AC, POWER,
@@ -25,5 +25,5 @@ task main()
                           DEGREES, -100);
 
    // Move the C motor backward for 720 degrees
-   RotateMotors(MOTOR_AC, POWER, -DEGREES);
+   RotateMotors(MOTOR_AC, POWER, -DEGREES, 0);
 }

@@ -17,7 +17,7 @@ int g_Max[] = {0, 0, 0, 0};
 int g_Min[] = {1023, 1023, 1023, 1023};
 
 //flag to determine if sound should be played
-bool g_Sound = false;
+bool g_Sound;
 
 /**
  CheckSensor - Returns the data read in
@@ -106,13 +106,9 @@ int GetCalibratedValues(byte p_Port)
                  the port.
  @param p_Mode - The mode of the sensor for
                 reading values back.
-
- @param p_Sound - Whether or not a tone should be
-                  played based on the reading of the
-                  sensor.
 **/
 void ConfigSensor(byte p_SensorPort, byte p_Type,
-                  byte p_Mode, bool p_Sound = false)
+                  byte p_Mode, bool p_Sound)
 {
    // Set the type and configure the sensor
    g_TypeArray[p_SensorPort] = p_Type;

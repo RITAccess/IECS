@@ -15,7 +15,7 @@
 *   Parameter with the sensor's checked
 *   value.
 */
-void outputSensorValues(int p_SensorValue)
+void outputSensorValue(int p_SensorValue)
 {
    // Display the sensor value to the screen
    TextOut(0, LCD_LINE3, "Sensor Value: ", true);
@@ -34,7 +34,7 @@ task main()
 {
    // Setup the sensor to be a light sensor
    ConfigSensor(S1, SENSOR_TYPE_LIGHT_INACTIVE,
-                    SENSOR_MODE_PERCENT);
+                    SENSOR_MODE_PERCENT, false);
 
    // Now, loop forever, because this is always true
    while(true)

@@ -11,7 +11,7 @@ task main()
 {
    // Configure the sensors
    ConfigSensor(S1, SENSOR_TYPE_TOUCH,
-                    SENSOR_MODE_BOOL);
+                    SENSOR_MODE_BOOL, false);
                     
    // Declare variables for the sensors and motors
    bool touchValue = false;
@@ -51,6 +51,6 @@ task main()
       }
       
       // Otherwise, move forward
-      MotorsForward(MOTOR_AC, -50);
+      MotorsForward(MOTOR_AC, -50, 0);
    }
 }

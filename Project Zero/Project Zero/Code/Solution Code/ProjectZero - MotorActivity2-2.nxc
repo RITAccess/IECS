@@ -26,7 +26,7 @@ void outputSensorValues(bool p_SensorValue)
       PlayTone(p_SensorValue, 1);
 
       // Move the motors forward
-      MotorsForward(MOTOR_AC, 75);
+      MotorsForward(MOTOR_AC, 75, 0);
    }
    else
    {
@@ -40,7 +40,7 @@ task main()
 {
    // Setup the sensor to be a touch sensor
    ConfigSensor(S1, SENSOR_TYPE_TOUCH,
-                    SENSOR_MODE_BOOL);
+                    SENSOR_MODE_BOOL, false);
 
    // Now, loop forever, because this is always true
    while(true)

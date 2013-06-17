@@ -7,7 +7,7 @@
 task main()
 {
    // Configure the ultrasonic sensor
-   ConfigSensor(S1, SENSOR_TYPE_LOWSPEED_9V, SENSOR_MODE_RAW);
+   ConfigSensor(S1, SENSOR_TYPE_LOWSPEED_9V, SENSOR_MODE_RAW, false);
    
    // Initialize variables for storing sensor values
    int ultraValue = 255;
@@ -35,7 +35,7 @@ task main()
       else
       {
          // Go forward
-         MotorsForward(MOTOR_AC, -75);
+         MotorsForward(MOTOR_AC, -75, 0);
       }
    }
 }

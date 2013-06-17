@@ -61,8 +61,7 @@ MotorsForward - Moves the given motors
 **/
 void MotorsForward(byte p_Motors[],
                    int p_Power,
-                   int p_TurnRatio = 0,
-                   byte p_Resets = RESET_NONE)
+                   int p_TurnRatio)
 {
    // If the number of motors is 1
    if(ArrayLen(p_Motors) == 1)
@@ -91,7 +90,7 @@ void MotorsForward(byte p_Motors[],
                          UF_UPDATE_MODE +
                          UF_UPDATE_SPEED +
                          RESET_BLOCKANDTACHO +
-                         p_Resets);
+                         RESET_NONE);
       }
       // Otherwise...
       else
@@ -110,7 +109,7 @@ void MotorsForward(byte p_Motors[],
             UpdateFlags, UF_UPDATE_TACHO_LIMIT +
                          UF_UPDATE_MODE +
                          UF_UPDATE_SPEED +
-                         p_Resets);
+                         RESET_NONE);
       }
    }
 }
@@ -130,12 +129,10 @@ MotorsReverse - Moves the given motors
 **/
 void MotorsReverse(byte p_Motors[],
                    int p_Power,
-                   int p_TurnRatio = 0,
-                   byte p_Resets = RESET_NONE)
+                   int p_TurnRatio = 0)
 {
    // Put us forward with negative power
-   MotorsForward(p_Motors, -p_Power, p_TurnRatio,
-                 p_Resets);
+   MotorsForward(p_Motors, -p_Power, p_TurnRatio);
 }
 
 /**

@@ -8,7 +8,7 @@
 task main()
 {
    // Configure the touch sensor
-   ConfigSensor(S1, SENSOR_TYPE_TOUCH, SENSOR_MODE_BOOL);
+   ConfigSensor(S1, SENSOR_TYPE_TOUCH, SENSOR_MODE_BOOL, false);
 
    // Initialize variables for storing sensor values
    bool sensorValue = false;
@@ -26,7 +26,7 @@ task main()
          Off(MOTOR_AC);
 
          // Go backwards
-         RotateMotors(MOTOR_AC, 60, 90);
+         RotateMotors(MOTOR_AC, 60, 90, 0);
 
          // Turn 90 degrees
          RotateMotors(MOTOR_AC, 60, 180, -100);
@@ -39,6 +39,6 @@ task main()
       }
 
       // Move forward
-      MotorsForward(MOTOR_AC, -75);
+      MotorsForward(MOTOR_AC, -75, 0);
    }
 }
