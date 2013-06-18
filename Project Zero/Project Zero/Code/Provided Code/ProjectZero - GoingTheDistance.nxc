@@ -5,38 +5,47 @@
 #include "SensorUtilities.nxc"
 
 // Any defines you need
+// Place “defines” below
 
 // Entry point to your program
 task main()
 {
    // Reset the rotation counters on the motors
    ResetRotationCount(MOTOR_AC);
-
+   
    // Configure the sensors
-
+   // Place code below
+                    
    // Declare variables for the sensors and motors
+   // Place code below
    int numRotations = 0;
-
+   
    // In a continuous loop
+   // Place code below
 
       // Get the current rotation count
       rotationCount = -MotorRotationCount(OUT_A);
-
+      
       // Read the sensor values
-
+      // Place code below
+      
       /* If the number of rotated degrees is
          greater than a new rotation, signal
          that we've rotated and reset the
          rotation. */
-      if(/* your statement */)
+      if(/* insert your statement here */)
       {
          // Reset the rotation count
          ResetRotationCount(OUT_AC);
+         // Make any changes to your code that you need.
+         // Place code below.
       }
-
+      
       /* If the touch sensor is hitting something,
-         stop the motors and exit the program.*/
-
+         stop the motors and exit the program.
+         Place code below. */
+      
       // Move forward
+      // Place code below
    }
 }

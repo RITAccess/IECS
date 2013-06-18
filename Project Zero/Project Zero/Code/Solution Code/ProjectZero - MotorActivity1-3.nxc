@@ -4,15 +4,6 @@
 // functions
 #include "MotorUtilities.nxc"
 
-// Constant for four seconds of time
-#define FOUR_SECONDS 4000
-
-// Constant for two seconds of time
-#define TWO_SECONDS 2000
-
-// Constant for power
-#define POWER 60
-
 /**
 * TurnAround – Turns the robot around
 *              for a short bit.
@@ -20,14 +11,14 @@
 void TurnAround()
 {
    // Turn one direction for 2 seconds
-   MotorsReverse(MOTOR_AC, POWER, 100);
-   Wait(TWO_SECONDS);
+   MotorsReverse(MOTOR_AC, 60, 100);
+   Wait(2000);
    Coast(MOTOR_AC);
    ClearMotors(MOTOR_AC);
 
    // Turn the other direction for 2 seconds
-   MotorsReverse(MOTOR_AC, POWER, -100);
-   Wait(TWO_SECONDS);
+   MotorsReverse(MOTOR_AC, 60, -100);
+   Wait(2000);
    Coast(MOTOR_AC);
    ClearMotors(MOTOR_AC);
 }
@@ -36,8 +27,8 @@ void TurnAround()
 task main()
 {
    // Move the motors forward for 4 seconds
-   MotorsForward(MOTOR_AC, POWER, 0);
-   Wait(FOUR_SECONDS);
+   MotorsForward(MOTOR_AC, 60, 0);
+   Wait(4000);
    Coast(MOTOR_AC);
    ClearMotors(MOTOR_AC);
 
@@ -45,8 +36,8 @@ task main()
    TurnAround();
 
    // Move the motors backwards for 4 seconds
-   MotorsReverse(MOTOR_AC, POWER, 0);
-   Wait(FOUR_SECONDS);
+   MotorsReverse(MOTOR_AC, 60, 0);
+   Wait(4000);
    Coast(MOTOR_C);
    ClearMotors(MOTOR_AC);
 
