@@ -9,17 +9,23 @@
 task main()
 {
    // Configure the touch sensor
+   // Place code below
 
    // Initialize variables for storing
    // sensor values
+   // Place code below
 
    // In a continuous loop
+   // Place code below
 
       // Read sensor values
+      // Place code below
 
       // If we touch something, move
       // backwards and turn
+      // Place code below
 
       // Move forward
+      // Place code below
 }
 
