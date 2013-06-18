@@ -4,7 +4,10 @@
 #include "SensorUtilities.nxc"
 
 // Threshold value for the light sensor
-#define THRESHOLD 50
+#define THRESHOLD1 30
+#define THRESHOLD2 35
+#define THRESHOLD3 40
+#define THRESHOLD4 50
 
 /**
 * outputSensorValues -
@@ -19,13 +22,19 @@ void outputSensorValue(int p_SensorValue)
 {
    // Display the sensor value to the screen
    TextOut(0, LCD_LINE3, "Sensor Value: ", true);
-   NumOut(16, LCD_LINE3, p_SensorValue, false);
+   NumOut(80, LCD_LINE3, p_SensorValue, false);
 
    // If the sensor value is great enough
-   if(p_SensorValue > THRESHOLD)
+   if(p_SensorValue > THRESHOLD4)
    {
       // Play a tone based on the sensor's value
-      PlayTone(p_SensorValue, 1);
+      PlayToneEx(500, 100, 2, false);
+   }else if (p_SensorValue > THRESHOLD3){
+   	PlayToneEx(1000, 100, 2, false);
+   }else if (p_SensorValue > THRESHOLD2){
+   	PlayToneEx(2000, 100, 2, false);
+   }else if (p_SensorValue > THRESHOLD1){
+   	PlayToneEx(4000, 100, 2, false);
    }
 }
 
