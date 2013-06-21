@@ -1,8 +1,8 @@
 <x:xmpmeta xmlns:x="adobe:ns:meta/">
    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/" xmlns:xmpG="http://ns.adobe.com/xap/1.0/g/" xmlns:tsc="http://www.techsmith.com/xmp/tsc/" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/" xmlns:tscDM="http://www.techsmith.com/xmp/tscDM/" xmlns:tscIQ="http://www.techsmith.com/xmp/tscIQ/" xmlns:tscHS="http://www.techsmith.com/xmp/tscHS/" xmlns:stDim="http://ns.adobe.com/xap/1.0/sType/Dimensions#" xmlns:stFnt="http://ns.adobe.com/xap/1.0/sType/Font#" xmlns:exif="http://ns.adobe.com/exif/1.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
-      <rdf:Description tsc:version="2.0.1" dc:date="2013-06-20 04:12:44 PM" dc:source="Camtasia Studio,8.1.0,enu" dc:title="htmlbasic" tscDM:firstFrame="htmlbasic_First_Frame.png" tscDM:originId="6F405B92-C7DE-4D93-B99C-1AE3BB74F36A" tscDM:project="Untitled">
-         <xmpDM:duration xmpDM:scale="1/1000" xmpDM:value="235500"/>
-         <xmpDM:videoFrameSize stDim:unit="pixel" stDim:h="480" stDim:w="852"/>
+      <rdf:Description tsc:version="2.0.1" dc:date="2013-06-21 12:03:58 PM" dc:source="Camtasia Studio,8.1.0,enu" dc:title="HtmlBasic" tscDM:firstFrame="HtmlBasic_First_Frame.png" tscDM:originId="6F405B92-C7DE-4D93-B99C-1AE3BB74F36A" tscDM:project="Untitled">
+         <xmpDM:duration xmpDM:scale="1/1000" xmpDM:value="315400"/>
+         <xmpDM:videoFrameSize stDim:unit="pixel" stDim:h="480" stDim:w="800"/>
          <tsc:langName>
             <rdf:Bag>
                <rdf:li xml:lang="en-US">English</rdf:li></rdf:Bag>
@@ -27,7 +27,7 @@
             <rdf:Description>
                <tscDM:files>
                   <rdf:Seq>
-                     <rdf:li xmpDM:name="0" xmpDM:value="htmlbasic.mp4"/><rdf:li xmpDM:name="1" xmpDM:value="htmlbasic_First_Frame.png"/><rdf:li xmpDM:name="2" xmpDM:value="htmlbasic_Thumbnails.png"/></rdf:Seq>
+                     <rdf:li xmpDM:name="0" xmpDM:value="HtmlBasic.mp4"/><rdf:li xmpDM:name="1" xmpDM:value="HtmlBasic_First_Frame.png"/><rdf:li xmpDM:name="2" xmpDM:value="HtmlBasic_Thumbnails.png"/></rdf:Seq>
                </tscDM:files>
             </rdf:Description>
          </tscDM:contentList>
