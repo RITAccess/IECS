@@ -1,0 +1,20 @@
+table,th,td {
+	border:3px solid black;
+	padding:10px;
+}
+
+table {
+	border-collapse:collapse;
+}
+
+tr#table-heading {
+	background:#FFFF99;
+}
+
+tr.odd {
+	background:#EB0A0A;
+}
+
+tr.even {
+	background:#FF7000;
+}
