@@ -1,0 +1,7 @@
+ul.Occasions{
+	list-style-type:square;
+}
+
+ol.Popularity{
+    list-style-type:upper-roman;
+}
