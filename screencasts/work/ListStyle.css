@@ -1,7 +1,7 @@
-ul.Occasions{
+ul#occasions {
 	list-style-type:square;
 }
 
-ol.Popularity{
-    list-style-type:upper-roman;
+ol#popularity {
+	list-style-type:upper-roman;
 }
