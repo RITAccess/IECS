@@ -1,0 +1,21 @@
+#include "MotorUtilities.nxc"
+
+task main()
+{
+
+	repeat(5)
+	{
+		MotorsForward(MOTOR_AC, 60, 0);
+		Wait(1950);
+		MotorsForward(MOTOR_B, 30, 0);
+		Wait(1950);
+		MotorsReverse(MOTOR_B, 30, 0);
+		Wait(1950);
+		MotorsReverse(MOTOR_AC, 60, 0);
+		Wait(1950);
+	}
+	MotorsForward(MOTOR_A, 75, 0);
+	Wait(5000);
+	MotorsReverse(MOTOR_B, 30, 30);
+	Wait(5000);
+}

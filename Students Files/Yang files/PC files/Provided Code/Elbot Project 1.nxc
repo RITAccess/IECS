@@ -1,0 +1,31 @@
+#include "MotorUtilities.nxc"
+#include "SensorUtilities.nxc"
+
+task main()
+{
+	ConfigSensor(S1, SENSOR_TYPE_TOUCH, 
+	SENSOR_MODE_BOOL, false);
+	
+	int touchto = 0;
+	while(true)
+	{
+	touchto = CheckSensor(S1);
+
+	if(touchto)
+	{
+		Off(MOTOR_AC);
+		
+		MotorsReverse(MOTOR_AC, 75, 0);
+		Wait(1000);
+		Coast(MOTOR_AC);
+		ClearMotors(MOTOR_AC);
+
+		MotorsReverse(MOTOR_A, 75, 0);
+		Wait(2000);
+		Coast(MOTOR_AC);
+		ClearMotors(MOTOR_AC);
+	}
+
+	MotorsForward(MOTOR_AC, 75, 0);
+	}
+}

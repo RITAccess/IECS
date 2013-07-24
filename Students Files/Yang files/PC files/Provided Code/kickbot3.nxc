@@ -1,0 +1,40 @@
+#include "MotorUtilities.nxc"
+#include "SensorUtilities.nxc"
+#define THRESHOLD 50
+
+task main() {
+
+	  ConfigSensor(S1, SENSOR_TYPE_LIGHT_ACTIVE,
+	SENSOR_MODE_PERCENT, false);
+   	ConfigSensor(S2, SENSOR_TYPE_LIGHT_ACTIVE,
+	SENSOR_MODE_PERCENT, false);
+	while(true)
+	{
+		int sensorValue = CheckSensor(S1);
+		int sensorValue2 = CheckSensor(S2);
+		
+		TextOut(0, LCD_LINE3, "L Sensor Value: ");
+   		NumOut(80, LCD_LINE3, sensorValue2);
+   		NumOut(80, LCD_LINE4, sensorValue);
+   		
+		if(sensorValue < THRESHOLD&& sensorValue2 > THRESHOLD){
+			//left on black, right on white
+			
+			MotorsForward (MOTOR_C,99,0);
+		                 Wait(100);
+		                 ClearMotors( MOTOR_AC);
+		}              
+		else if (sensorValue>THRESHOLD&& sensorValue2>THRESHOLD)
+		{ 
+			//both on white (hit ball)
+			Off(MOTOR_AC);
+			//MotorsForward (MOTOR_B,40,0);
+		}            
+		if(sensorValue > THRESHOLD&& sensorValue2< THRESHOLD){	
+			//left on white, right on black
+			MotorsForward(MOTOR_A,99,0);
+			Wait(100); 	
+			 ClearMotors( MOTOR_AC);	 
+	          }            
+	}
+}
