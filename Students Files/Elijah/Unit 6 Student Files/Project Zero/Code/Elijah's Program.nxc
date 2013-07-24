@@ -1,0 +1,25 @@
+/* SensorActivity2-2.nxc */
+
+// Import the sensor utilities
+#include "MotorUtilities.nxc"
+#include "SensorUtilities.nxc"
+
+// The entry point for your program
+task main()
+{
+   // Setup the sensor to be a touch sensor
+   ConfigSensor(S1, SENSOR_TYPE_TOUCH,
+                    SENSOR_MODE_BOOL, false);
+  
+   // Now, loop forever, because this is always true
+   while(true)
+   { 
+   	MotorsForward(MOTOR_AC, 75, 0);
+      // Store the value read from the sensor
+      bool sensorValue = CheckSensor(S1);
+	if(sensorValue==true)
+	{ Off(MOTOR_AC);
+PlayToneEx (2000, 100, 2, false) ;
+	}
+   }
+}

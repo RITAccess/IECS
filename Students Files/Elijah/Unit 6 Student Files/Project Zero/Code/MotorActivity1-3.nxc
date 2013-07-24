@@ -1,0 +1,47 @@
+/* MotorActivity1-3.nxc */
+
+// The file for the motor control functions
+#include "MotorUtilities.nxc"
+
+/**
+ * * TurnAround - Turns the robot around 
+ * for a short bit.
+ * */
+  void TurnAround()
+  {
+  	// Turn one direction for 2 seconds
+  	MotorsReverse (MOTOR_AC, 60, 100) ;
+  Wait (2000) ;
+  Coast (MOTOR_AC) ;
+  ClearMotors (MOTOR_AC) ;
+
+  // Turn the other direction for 2 seconds
+  MotorsReverse (MOTOR_AC, 60, -100) ;
+  Wait (2000) ;
+  Coast (MOTOR_AC) ;
+  ClearMotors (MOTOR_AC) ;
+  }
+  	
+  // The entry point for your program
+  task main()
+  {
+  	//Move the motors forward for 4 seconds
+  	MotorsForward (MOTOR_AC, 60, 0);
+  	Wait (4000) ;
+  	Coast (MOTOR_AC);
+  	ClearMotors (MOTOR_AC) ;
+
+  	//Turn the robot around for a bit
+  	TurnAround() ;
+
+  //Move the motors backwards for 4 seconds
+  MotorsReverse (MOTOR_AC, 60, 0) ;
+  Wait (4000) ;
+  Coast (MOTOR_AC);
+  ClearMotors (MOTOR_AC) ;
+
+  	// Turn the mnotors off and brake them
+  	Off (MOTOR_AC) ;
+  }
+
+ 

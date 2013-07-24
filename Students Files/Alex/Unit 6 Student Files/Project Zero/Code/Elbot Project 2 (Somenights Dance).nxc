@@ -1,0 +1,45 @@
+#include "MotorUtilities.nxc"
+#include "SensorUtilities.nxc"
+#define THRESHOLDBASE 60
+#define THRESHOLD2 70
+#define THRESHOLD3 80
+#define THRESHOLD4 90
+#define THRESHOLDBIGBEAT 100
+
+task main()
+{
+ConfigSensor(S1, SENSOR_TYPE_SOUND_DB, SENSOR_MODE_PERCENT, false);
+int dcheck = 0;
+while(true)
+{
+	dcheck = CheckSensor(S1);
+	if(dcheck > THRESHOLDBASE && dcheck < THRESHOLD2)
+	{
+		MotorsForward(MOTOR_AC, 60, 0);
+		Wait(2000);
+		MotorsReverse(MOTOR_AC, 60, 0);
+		Wait(2000);
+	}
+	else if(dcheck > THRESHOLD2 && dcheck < THRESHOLD3)
+	{
+		
+	}
+	else if(dcheck > THRESHOLD3 && dcheck < THRESHOLD4)
+	{
+		
+	}
+	else if(dcheck > THRESHOLD4 && dcheck < THRESHOLDBIGBEAT)
+	{
+		
+	}
+	else if(dcheck > THRESHOLDBIGBEAT)
+	{
+		
+	}
+	else
+	{
+		Off(MOTOR_ABC);
+	}
+}
+Off(MOTOR_ABC);
+}

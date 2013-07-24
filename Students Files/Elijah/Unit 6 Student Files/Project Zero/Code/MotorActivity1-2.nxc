@@ -1,0 +1,21 @@
+/*MotorActivity1-2.nxc */
+ //The file for the motor control function
+ #include "MotorUtilities.nxc"
+ //The constant power for the motor
+ #define POWER 100
+ //The constant degree to rotate for
+ #define DEGREE 5000
+ //The entrey point for your program
+ task main ()
+ {
+ 	//Move A motor forward for 720 degrees
+ RotateMotors (MOTOR_A, POWER, DEGREE, 0) ;
+ //Move both motors backwards for 720 degrees
+ RotateMotors (MOTOR_AC, POWER, -DEGREE, 0) ;
+ // Move the C motor forward for 720 degrees
+ RotateMotors (MOTOR_C, POWER, DEGREE, 0) ;
+ }
+ 
+ 
+ 
+ 

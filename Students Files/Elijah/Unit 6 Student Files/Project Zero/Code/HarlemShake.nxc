@@ -1,0 +1,60 @@
+#include "MotorUtilities.nxc"
+#include "SensorUtilities.nxc"
+#define Shake 50
+int sensorValue;
+#define thresholda 80
+#define thresholdb 85
+#define thresholdc 98
+#define thresholdd 99
+task main()
+{
+ConfigSensor (S1, SENSOR_TYPE_LOWSPEED_9V,
+SENSOR_MODE_RAW, false);
+ConfigSensor (S2, SENSOR_TYPE_SOUND_DB,
+SENSOR_MODE_PERCENT, false);
+
+MotorsForward (MOTOR_A, Shake, 0);
+MotorsReverse (MOTOR_C, Shake, 0);
+Wait (400);
+
+repeat(10)
+{
+	sensorValue = CheckSensor(S2);
+	if(sensorValue>thresholdc){
+		MotorsForward (MOTOR_A, Shake, 0);
+		MotorsReverse (MOTOR_C, Shake, 0);
+	}
+MotorsForward (MOTOR_A, Shake, 0);
+MotorsReverse (MOTOR_C, Shake, 0);
+Wait (714);
+Coast (MOTOR_AC);
+ClearMotors (MOTOR_AC);
+RotateMotor (MOTOR_AC, Shake, 0);
+MotorsForward (MOTOR_C, Shake, 0);
+MotorsReverse (MOTOR_A, Shake, 0);
+Wait (714);
+Coast (MOTOR_AC);
+ClearMotors (MOTOR_AC);
+}
+repeat(2)
+{
+MotorsForward (MOTOR_A, 70, 0);
+MotorsReverse (MOTOR_C, 70, 0);
+Wait (1400);
+Coast (MOTOR_AC);
+ClearMotors (MOTOR_AC);
+MotorsForward (MOTOR_C, 100, 0);
+MotorsReverse (MOTOR_A, 100, 0);
+Wait (1400);
+Coast (MOTOR_AC);
+ClearMotors (MOTOR_AC);
+repeat(9)
+{
+MotorsForward (MOTOR_C, 100, 0);
+MotorsReverse (MOTOR_A, 100, 0);
+ Wait (1400);
+ Coast (MOTOR_AC);
+ ClearMotors (MOTOR_AC);
+}
+}
+}
