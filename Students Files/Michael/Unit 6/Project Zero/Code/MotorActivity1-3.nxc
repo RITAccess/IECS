@@ -1,0 +1,31 @@
+#include "MotorUtilities.nxc"
+
+void TurnAround()
+{
+	MotorsReverse(MOTOR_AC, 60, 100);
+	Wait(2000);
+	Coast(MOTOR_AC);
+	ClearMotors(MOTOR_AC);
+
+	MotorsReverse(MOTOR_AC, 60, -100);
+	Wait(2000);
+	Coast(MOTOR_AC);
+	ClearMotors(MOTOR_AC);	
+}
+
+task main()
+{
+	MotorsForward(MOTOR_AC, 60, 0);
+	Wait(4000);
+	Coast(MOTOR_AC);
+	ClearMotors(MOTOR_AC);
+
+	TurnAround();
+	
+	MotorsReverse(MOTOR_AC, 60, 0);
+	Wait(4000);
+	Coast(MOTOR_AC);
+	ClearMotors(MOTOR_AC);
+
+	Off(MOTOR_AC);
+}
