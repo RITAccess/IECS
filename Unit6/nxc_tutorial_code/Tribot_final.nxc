@@ -1,0 +1,42 @@
+/*
+Final Tribot tutorial in LMS NXT Robo Center
+Daniele Benedettelli
+
+You will see with your own eyes how it is faster and easier to
+make the same program in NXC rather than NXT-G.
+Also, the compiler is faster, and binary file is much smaller.
+
+From Tribot programming guide:
+Can you program the robot so that it starts to move only
+when the ball is placed in front of it?
+Can you program it to move forwards until the Touch Sensor bumps
+into the ball, stop, and when you clap your hands once,
+to close the grabber and turn around and go back?
+The grabber should open when the robot reaches the black line.
+*/
+
+
+
+task main(){
+   SetSensorTouch(IN_1);                   // Configure all the sensors.
+   SetSensorSound(IN_2);                   //
+   SetSensorLight(IN_3);                   //
+   SetSensorLowspeed(IN_4);                //
+   until(SensorUS(IN_4)<20)
+      Wait(10);                            // Wait for near object
+   OnFwdSync(OUT_AC,75,0);                 // and start motors.
+   until(SENSOR_1 == 1 );                  // Wait for touch sensor pressed
+   Off(OUT_AC);                            // and stop motors.
+   until(SENSOR_2 > 50);                   // Wait for a loud sound
+   OnRev(OUT_B,100);                       //
+   Wait(500);                              // Close grabber
+   Off(OUT_B);                             //
+   RotateMotorEx(OUT_AC,100,-180,0,true,true);  // Backup a bit
+   RotateMotorEx(OUT_AC,100,370,100,true,true); // Turn
+   OnFwdSync(OUT_AC,75,0);
+   until((SENSOR_3<40)||(SENSOR_2>50));    //Wait for black line or loud sound
+   Off(OUT_AC);                            //Stop motors
+   OnFwd(OUT_B,100);                       //
+   Wait(500);                              // Open grabber
+   Off(OUT_B);                             //
+}

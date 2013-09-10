@@ -1,0 +1,40 @@
+mutex moveMutex;
+int ttt,tt2;
+
+task moverandom()
+{
+  while (true)
+  {
+    ttt = Random(500) + 40;
+    tt2 = Random(1);
+    Acquire(moveMutex);
+    if (tt2 > 0)
+      { OnRev(OUT_A, 75); OnFwd(OUT_C, 75); Wait(ttt); }
+    else
+      { OnRev(OUT_C, 75); OnFwd(OUT_A, 75); Wait(ttt); }
+    ttt = Random(1500) + 50;
+    OnFwd(OUT_AC, 75); Wait(ttt);
+    Release(moveMutex);
+  }
+}
+
+task submain()
+{
+  SetSensorType(IN_1, SENSOR_TYPE_LIGHT);
+  SetSensorMode(IN_1, SENSOR_MODE_RAW);
+  while (true)
+  {
+    if ((SENSOR_1 < 100) || (SENSOR_1 > 750))
+    {
+      Acquire(moveMutex);
+      OnRev(OUT_AC, 75); Wait(300);
+      Release(moveMutex);
+    }
+  }
+}
+
+task main()
+{
+  Precedes(moverandom, submain);
+}
+

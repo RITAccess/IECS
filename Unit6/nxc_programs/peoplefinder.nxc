@@ -1,0 +1,21 @@
+#include "linefollow2.nxc"
+
+task main(){
+	StartLineFollow();
+	GoStraight();
+	WaitUntilPress();
+	TurnAround();
+	TurnRight();
+	GoStraight();
+	TurnRight();
+	TurnRight();
+	GoStraight();
+	TurnRight();
+	TurnRight();
+	WaitUntilPress();
+	TurnAround();
+	GoStraight();
+	WaitUntilPress();
+	TurnAround();
+	TurnLeft();
+}

@@ -1,0 +1,28 @@
+/*
+ * Using the word #define lets us give names to certain numbers or pieces of text.
+ * Later in the program we can use that name to stand for the number or text.
+ */
+#define MOVE_TIME   500 
+#define TURN_TIME   360 
+//after this, anytime we use MOVE_TIME it will mean 500, and TURN_TIME will mean 360.
+//By using these, we can use the same name in several places to mean the same thing, and we can
+//change its value everywhere by just changing its definition.
+
+task main()
+{
+  /*
+   * The repeat statement lets us repeat a number of statements as many times as we want. 
+   * We give it the number of times we want to repeat something, then it will repeat the following
+   * block inside curly braces that many times.
+   */
+  repeat(4)
+  {
+    OnFwd(OUT_AC, 75);
+    Wait(MOVE_TIME); 
+    //here, MOVE_TIME is replaced by 500 because of the #define statement at the top of the file.
+    OnRev(OUT_C, 75);
+    //by having one motor move forward and the other move backwards, we can make the robot turn in place.
+    Wait(TURN_TIME);
+  }
+  Off(OUT_AC);
+}

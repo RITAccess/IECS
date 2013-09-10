@@ -1,0 +1,23 @@
+#define TIME 300
+#define MAXVOL 7
+#define MINVOL 1
+#define MIDVOL 3
+#define pause_4th Wait(TIME)
+#define pause_8th Wait(TIME/2)
+#define note_4th PlayFileEx("! Click.rso",MIDVOL,FALSE); pause_4th
+#define note_8th PlayFileEx("! Click.rso",MAXVOL,FALSE); pause_8th
+
+task main()
+{
+  PlayFileEx("! Startup.rso",MINVOL,FALSE);
+  Wait(2000);
+  note_4th;
+  note_8th;
+  note_8th;
+  note_4th;
+  note_4th;
+  pause_4th;
+  note_4th;
+  note_4th;
+  Wait(100);
+}

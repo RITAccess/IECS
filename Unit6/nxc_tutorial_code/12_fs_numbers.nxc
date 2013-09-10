@@ -1,0 +1,43 @@
+#define INT //  INT or LONG
+
+#ifdef INT
+task main () {
+   byte handle, time = 0;
+   int n, fsize,len, i;
+   int in;
+   DeleteFile("int.txt");
+   CreateFile("int.txt",4096,handle);
+   for (int i = 1000; i<=10000; i+=1000){
+      WriteLn(handle,i);
+   }
+   CloseFile(handle);
+   OpenFileRead("int.txt",fsize,handle);
+   until (ReadLn(handle,in)!=NO_ERR){
+      ClearScreen();
+      NumOut(30,LCD_LINE5,in);
+      Wait(500);
+   }
+   CloseFile(handle);
+}
+#endif
+
+#ifdef LONG
+task main () {
+   byte handle, time = 0;
+   int n, fsize,len, i;
+   long in;
+   DeleteFile("long.txt");
+   CreateFile("long.txt",4096,handle);
+   for (long i = 100000; i<=1000000; i+=50000){
+      WriteLn(handle,i);
+   }
+   CloseFile(handle);
+   OpenFileRead("long.txt",fsize,handle);
+   until (ReadLn(handle,in)!=NO_ERR){
+      ClearScreen();
+      NumOut(30,LCD_LINE5,in);
+      Wait(500);
+   }
+   CloseFile(handle);
+}
+#endif

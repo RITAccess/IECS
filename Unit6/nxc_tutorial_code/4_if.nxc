@@ -1,0 +1,18 @@
+#define MOVE_TIME   500
+#define TURN_TIME   360
+
+int a = 0;
+
+task main()
+{
+  while(true)
+  {
+    OnFwd(OUT_AC, 75);
+    Wait(MOVE_TIME);
+    if (Random() > 0)
+      OnRev(OUT_C, 75);
+    else
+      OnRev(OUT_A, 75);
+    Wait(TURN_TIME);
+  }
+}

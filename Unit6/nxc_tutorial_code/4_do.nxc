@@ -1,0 +1,20 @@
+
+int move_time, turn_time, total_time;
+
+task main()
+{
+  total_time = 0;
+  do
+  {
+    move_time = Random(1000);
+    turn_time = Random(1000);   
+    OnFwd(OUT_AC, 75);
+    Wait(move_time);
+    OnRev(OUT_C, 75);
+    Wait(turn_time);
+    total_time += move_time; 
+    total_time += turn_time;
+  }
+  while (total_time < 20000);
+  Off(OUT_AC);
+}

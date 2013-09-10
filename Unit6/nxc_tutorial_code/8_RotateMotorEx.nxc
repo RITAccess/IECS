@@ -1,0 +1,8 @@
+task main()
+{
+  RotateMotorEx(OUT_AC, 50, 360, 0, true, true);
+  RotateMotorEx(OUT_AC, 50, 360, 40, true, true);
+  RotateMotorEx(OUT_AC, 50, 360, -40, true, true);
+  RotateMotorEx(OUT_AC, 50, 360, 100, true, true);
+}
+

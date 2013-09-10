@@ -1,0 +1,17 @@
+#define THRESHOLD 40
+
+task main()
+{
+  SetSensorLight(IN_3);
+  OnFwd(OUT_AC, 75);
+  while (true)
+  {
+    if (Sensor(IN_2) > THRESHOLD)
+    {
+      OnRev(OUT_C, 75);
+      Wait(100);
+      until(Sensor(IN_2) <= THRESHOLD);
+      OnFwd(OUT_AC, 75);
+    }  
+  }
+}

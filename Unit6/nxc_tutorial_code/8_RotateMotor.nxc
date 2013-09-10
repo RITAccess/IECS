@@ -1,0 +1,6 @@
+task main()
+{
+  OnFwd(OUT_BC, 50);
+  Wait(5000);
+}
+

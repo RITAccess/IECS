@@ -1,0 +1,8 @@
+#define P 40
+#define I 40
+#define D 70
+
+task main(){
+     RotateMotorPID(OUT_A, 100, 180, P, I, D);
+     Wait(2000);
+}
