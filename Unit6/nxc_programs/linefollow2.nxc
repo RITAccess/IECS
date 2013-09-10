@@ -1,0 +1,283 @@
+
+#define SPEED_NORMAL 45
+#define SPEED_TURN 5
+#define THRESHOLD 48
+
+#define TURN_LEFT 0
+#define TURN_RIGHT 1
+#define TURN_NONE 2
+
+//These constants deal with handling different types of intersections.
+//The map we provide only contains cross-intersections (4-way)
+//so students don't need to instruct the robot what intersections we come to.
+
+//The code provides some basic support for T-intersections if you want to make your own map,
+//but it has limitations. Refer to TIntersection() and FourWayIntersection() if you really want T-intersections.
+#define T_INTERSECTION 0
+#define CROSS_INTERSECTION 1
+
+mutex endlinefollowmutex;
+
+//What to do when it reaches an intersection.
+int turnChoice = TURN_NONE;
+
+//What type of intersection is coming up ahead.
+//Must be set correctly to allow proper turning!
+int intersectionType = CROSS_INTERSECTION;
+
+//This flag tells the linefollow task to turn the robot around.
+bool turnAround;
+
+//This flag is set to true whenever a turn is made.
+bool hasMadeTurn;
+
+//flag for the LineFollow task to stop.
+//when false, stop the task.
+bool continueLineFollow;
+
+//Set the line following routine to go straight or turn left or right when it reaches an intersection.
+//The intersection type must be properly set for the robot to be able to turn properly.
+//call with one of TURN_*
+void SetTurnChoice(int choice){
+	turnChoice = choice;
+}
+
+//Set the the pattern of the next intersection. 
+//This must be set properly to allow the robot to turn correctly.
+//Only supports T and 4-way intersections at the moment.
+//Call with *_INTERSECTION
+void SetIntersectionType(int type){
+	intersectionType = type;
+}
+
+//Helper function.
+//Forces the current thread to wait until the sensor at the given port detects
+//that it is on a black line.
+void WaitUntilBlack(int port){
+	bool black = Sensor(port) < THRESHOLD;
+	while (!black){
+		black  = Sensor(port) < THRESHOLD;
+		Wait(30);
+	}
+}
+
+//This function ends the line following task.
+//It forces the current thread to wait 455 milliseconds so that the task terminates before it returns.
+void StopLineFollow(){
+	Acquire(endlinefollowmutex);
+	continueLineFollow = false;
+	Release(endlinefollowmutex);
+	Off(OUT_AC);
+}
+
+//check if there is an obstacle within 20 cm (approx) of the robot.
+bool CheckForObstacle(){
+	return SensorUS(S1) < 20;
+}
+
+task lineFollow(){
+	hasMadeTurn = false;
+	turnAround = false;
+	SetSensorTouch(S2);
+	SetSensorLowspeed(S1);
+	ResetSensor(S1);
+	SetSensorLight(S3);//right
+	SetSensorLight(S4);//left
+	//a right, c left
+	OnFwd(OUT_AC, SPEED_NORMAL);
+	while (continueLineFollow){
+		
+
+		bool obstacle = CheckForObstacle();
+		if (obstacle){
+			PlayTone(500, 500);
+		}
+		
+		ResetScreen();
+		int right = Sensor(S3);
+		int left = Sensor(S4);
+
+		NumOut(0,LCD_LINE1, left);
+
+		NumOut(64, LCD_LINE1, right);
+
+		bool leftOnLine = left < THRESHOLD;
+		bool rightOnLine = right < THRESHOLD;
+
+		if (turnAround && continueLineFollow){
+			OnRev(OUT_C, SPEED_NORMAL);
+			OnRev(OUT_A, SPEED_NORMAL);
+			Wait(500);
+			OnFwd(OUT_A, SPEED_NORMAL);
+			WaitUntilBlack(S3);
+			WaitUntilBlack(S4);
+			turnAround = false;
+		}else if (leftOnLine && rightOnLine && turnChoice != TURN_NONE && continueLineFollow){	
+			//PlayTone(500, 1000);	
+			Wait(700);
+			if (turnChoice == TURN_LEFT){
+				OnRev(OUT_C, SPEED_NORMAL - 10 );
+				OnFwd(OUT_A, SPEED_NORMAL + 15);
+//				while (leftOnLine || rightOnLine){
+//					Wait(50);
+//					leftOnLine = Sensor(S4) < THRESHOLD;
+//					rightOnLine = Sensor(S3) < THRESHOLD;
+//				}
+				if (intersectionType == CROSS_INTERSECTION){
+					ResetScreen();
+					WaitUntilBlack(S3);
+					TextOut(0,LCD_LINE1, "RIGHT");
+					WaitUntilBlack(S4);
+					TextOut(0,LCD_LINE2, "LEFT");
+					WaitUntilBlack(S3);
+					TextOut(0,LCD_LINE3, "RIGHT");
+				}else if (intersectionType == T_INTERSECTION){
+					ResetScreen();
+					WaitUntilBlack(S4);
+					TextOut(0,LCD_LINE1, "LEFT");
+					WaitUntilBlack(S3);
+					TextOut(0,LCD_LINE2, "RIGHT");
+				}
+				hasMadeTurn = true;
+			}else if (turnChoice == TURN_RIGHT){
+				OnRev(OUT_A, SPEED_NORMAL - 10 );
+				OnFwd(OUT_C, SPEED_NORMAL + 15);
+//				while (leftOnLine || rightOnLine){
+//					Wait(50);
+//					leftOnLine = Sensor(S4) < THRESHOLD;
+//					rightOnLine = Sensor(S3) < THRESHOLD;
+//				}
+				if (intersectionType == CROSS_INTERSECTION){
+					ResetScreen();
+					WaitUntilBlack(S4);
+					TextOut(0, LCD_LINE1, "LEFT");
+					WaitUntilBlack(S3);
+					TextOut(0, LCD_LINE2, "RIGHT");
+					WaitUntilBlack(S4);
+					TextOut(0, LCD_LINE3, "LEFT");
+//					Wait(300);
+				}else if (intersectionType == T_INTERSECTION){
+					ResetScreen();
+					WaitUntilBlack(S3);
+					TextOut(0, LCD_LINE1, "RIGHT");
+					WaitUntilBlack(S4);
+					TextOut(0, LCD_LINE2, "LEFT");
+//					Wait(300);
+				}
+				hasMadeTurn = true;
+			}
+
+		}else if (rightOnLine && leftOnLine && turnChoice == TURN_NONE && continueLineFollow){
+			//PlayTone(1000, 1000);
+			while (Sensor(S4) < THRESHOLD && Sensor(S3) < THRESHOLD && continueLineFollow){
+				Wait(50);
+			}
+			hasMadeTurn = true;
+		}else if (leftOnLine && continueLineFollow){
+			OnFwd(OUT_C, SPEED_TURN);
+			while (Sensor(S4) < THRESHOLD && Sensor(S3) > THRESHOLD && continueLineFollow){
+				Wait(50);
+			}
+		}else if (rightOnLine && continueLineFollow){
+			OnFwd(OUT_A, SPEED_TURN);
+			while (Sensor(S3) < THRESHOLD && Sensor(S4) > THRESHOLD && continueLineFollow){
+				Wait(50);
+			}
+		}
+		Acquire(endlinefollowmutex);
+		if (continueLineFollow){
+			
+			OnFwd(OUT_AC, SPEED_NORMAL);
+	
+		}
+		Release(endlinefollowmutex);
+	}
+}
+
+//Client functions
+
+//Starts the line following task.
+//This controls the motors on OUT_AC (left = C, right = A) so once this is running you should not interact with those motors
+//directly. Otherwise it immediately returns and you can continue running code while the line following task runs in
+//another thread.
+void StartLineFollow(){
+	continueLineFollow = true;
+	start lineFollow;
+}
+
+
+//Forces the curren thread to wait until the touch sensor is pressed
+void WaitUntilPress(){
+	while(!SensorBoolean(S2)){
+		Wait(25);
+	}
+	PlayTone(1000, 500);
+}
+
+//Helper Function.
+//Forces the current thread to wait until a turn has been completed.o
+void WaitUntilTurn(){
+	hasMadeTurn = false;
+	while (!hasMadeTurn){
+		Wait(50);
+	}
+}
+
+//Forces the current thread to wait unitl an obstacle is encountered.
+void WaitUntilObstacle(){
+	while (!CheckForObstacle()){
+		Wait(25);
+	}
+}
+
+//turn right at the next intersection
+void TurnRight(){
+	SetTurnChoice(TURN_RIGHT);
+	WaitUntilTurn();
+}
+
+//turn left at the next intersection
+void TurnLeft(){
+	SetTurnChoice(TURN_LEFT);
+	WaitUntilTurn();
+}
+
+//go straight at the next intersection
+void GoStraight(){
+	SetTurnChoice(TURN_NONE);
+	WaitUntilTurn();
+}
+
+//go right at the next intersection but immediately return.
+void TurnRightAndReturn(){
+	SetTurnChoice(TURN_RIGHT);
+}
+
+//turn left at the next intersection but immediately return
+void TurnLeftAndReturn(){
+	SetTurnChoice(TURN_LEFT);
+}
+
+//go straight at the next intersection but immediatelly return
+void GoStraightAndReturn(){
+	SetTurnChoice(TURN_NONE);
+}
+
+//turns the robot around and blocks until finished
+void TurnAround(){
+	turnAround = true;
+	while (turnAround){
+		Wait(25);
+	}
+	Wait(1000);
+}
+
+//Tell the robot that the next intersection is a four-way intersection
+void FourWayIntersection(){
+	SetIntersectionType(CROSS_INTERSECTION);
+}
+
+//Tell the robot that future intersections are T intersections
+void TIntersection(){
+	SetIntersectionType(T_INTERSECTION);
+}

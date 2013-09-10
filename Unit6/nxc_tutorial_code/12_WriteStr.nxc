@@ -1,0 +1,21 @@
+#define OK LDR_SUCCESS
+
+task main(){
+   byte fileHandle;
+   short fileSize;
+   short bytesWritten;
+   string read;
+   string write;
+   string error;
+   DeleteFile("Danny.txt");
+   DeleteFile("DannySays.txt");
+   CreateFile("Danny.txt", 512, fileHandle);
+   for(int i=2; i<=10; i++ ){
+      write = "NXT is cool ";
+      string tmp = NumToStr(i);
+      write = StrCat(write,tmp," times!");
+      WriteLnString(fileHandle,write, bytesWritten);
+   }
+   CloseFile(fileHandle);
+   RenameFile("Danny.txt","DannySays.txt");
+}

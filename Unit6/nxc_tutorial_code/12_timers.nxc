@@ -1,0 +1,15 @@
+task main()
+{
+  long t0, time;
+  t0 = CurrentTick();
+  do
+  {
+    time = CurrentTick()-t0;
+    OnFwd(OUT_AC, 75);
+    Wait(Random(1000));
+    OnRev(OUT_C, 75);
+    Wait(Random(1000));
+  }
+  while (time<10000);
+  Off(OUT_AC);
+}

@@ -1,0 +1,10 @@
+#define VOL 3
+
+task main()
+{
+  PlayToneEx(262,400,VOL,FALSE);  Wait(500);
+  PlayToneEx(294,400,VOL,FALSE);  Wait(500);
+  PlayToneEx(330,400,VOL,FALSE);  Wait(500);
+  PlayToneEx(294,400,VOL,FALSE);  Wait(500);
+  PlayToneEx(262,1600,VOL,FALSE); Wait(2000);
+}

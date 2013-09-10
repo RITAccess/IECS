@@ -1,0 +1,17 @@
+task main()
+{
+  PlayTone(5000,30);
+  OnFwdSync(OUT_AC,50,0);
+  Wait(1000);
+  PlayTone(5000,30);
+  OnFwdSync(OUT_AC,50,20);
+  Wait(1000);
+  PlayTone(5000,30);
+  OnFwdSync(OUT_AC,50,-40);
+  Wait(1000);
+  PlayTone(5000,30);
+  OnRevSync(OUT_AC,50,90);
+  Wait(1000);
+  Off(OUT_AC);
+}
+

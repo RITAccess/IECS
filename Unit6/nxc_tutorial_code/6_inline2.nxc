@@ -1,0 +1,18 @@
+inline void turn_around(int pwr, int turntime)
+{
+  OnRev(OUT_C, pwr);
+  Wait(turntime);
+  OnFwd(OUT_AC, pwr);
+}
+
+task main()
+{
+  OnFwd(OUT_AC, 75);
+  Wait(1000);
+  turn_around(75, 2000);
+  Wait(2000);
+  turn_around(75, 500);
+  Wait(1000);
+  turn_around(75, 3000);
+  Off(OUT_AC);
+}
