@@ -1,0 +1,31 @@
+ul#flower-menu {
+  list-style: none;
+  margin: 0;
+  padding 7px 0;
+  border-bottom: 3px solid #CCC;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+}
+
+ul#flower-menu li{
+  display: inline;
+  margin: 0 3px;
+}
+
+ul#flower-menu a{
+  text-decoration: none;
+  padding: 0 0 3px;
+  border-bottom: 4px solid #FFF;
+  color: #000;
+}
+
+ul#flower-menu a#current{
+  border-color: #739;
+  color: #06F
+}
+
+ul#flower-menu a:hover{
+  border-color: #739;
+  color: #666;
+}
