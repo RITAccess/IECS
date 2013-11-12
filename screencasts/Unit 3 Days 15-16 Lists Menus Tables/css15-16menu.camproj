@@ -10,9 +10,9 @@
 </Project_Settings>
 
 
-<AutoSaveFile>C:\Users\Scott\AppData\Local\TechSmith\Camtasia Studio\8.0\Auto-Saves\css15-16menu51e30ef.autosave.camproj</AutoSaveFile>
+<AutoSaveFile>C:\Users\Fangy\AppData\Local\TechSmith\Camtasia Studio\8.0\Auto-Saves\css15-16menua4aa36.autosave.camproj</AutoSaveFile>
 
-<ProjectID>39E8E010-5EA1-425A-8531-B44D60535421</ProjectID>
+<ProjectID>7796231E-E3D3-4F81-ADC5-2258453B29A8</ProjectID>
 
 <PowerPointProject>0</PowerPointProject>
 
@@ -44,42 +44,42 @@
   <Comment></Comment>
   <System></System>
   <SourceBin id="3"  >
-    <Source id="4" src="C:\Users\Scott\IECS\screencasts\Unit 3 Days 15-16 Lists Menus Tables\menu7.camrec" lastMod="20130910T214002" rect="(0,0,1364,768)" >
+    <Source id="4" src="C:\Users\Fangy\Desktop\menu7.camrec" lastMod="20130910T224004" rect="(0,0,1364,768)" >
       <SourceTrack range="(0,827666667)" type="0" editRate="10000000/1" trackRect="(0,0,1364,768)" sampleRate="10000000/333333" bitDepth="24" numChannels="0" filename="menu7.camrec!Screen_Stream.avi" metaData="menu7.camrec!Events.dat;menu7.camrec!manifest.camxml;" />
       <SourceTrack range="(0,829000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="22050/1" bitDepth="16" numChannels="1" filename="menu7.camrec!Screen_Stream.avi" metaData="" />
       <SourceTrack range="(0,830000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="44100/1" bitDepth="16" numChannels="2" filename="menu7.camrec!SysAudio.wav" metaData="" />
     </Source>
-    <Source id="5" src="C:\Users\Scott\IECS\screencasts\Unit 3 Days 15-16 Lists Menus Tables\menu1.camrec" lastMod="20130910T211141" rect="(0,0,1364,768)" >
+    <Source id="5" src="C:\Users\Fangy\Desktop\menu1.camrec" lastMod="20130910T221142" rect="(0,0,1364,768)" >
       <SourceTrack range="(0,1912333333)" type="0" editRate="10000000/1" trackRect="(0,0,1364,768)" sampleRate="10000000/333333" bitDepth="24" numChannels="0" filename="menu1.camrec!Screen_Stream.avi" metaData="menu1.camrec!Events.dat;menu1.camrec!manifest.camxml;" />
       <SourceTrack range="(0,1914000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="22050/1" bitDepth="16" numChannels="1" filename="menu1.camrec!Screen_Stream.avi" metaData="" />
       <SourceTrack range="(0,1916666667)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="44100/1" bitDepth="16" numChannels="2" filename="menu1.camrec!SysAudio.wav" metaData="" />
     </Source>
-    <Source id="6" src="C:\Users\Scott\IECS\screencasts\Unit 3 Days 15-16 Lists Menus Tables\menu2.camrec" lastMod="20130910T211859" rect="(0,0,1364,768)" >
+    <Source id="6" src="C:\Users\Fangy\Desktop\menu2.camrec" lastMod="20130910T221900" rect="(0,0,1364,768)" >
       <SourceTrack range="(0,3237000000)" type="0" editRate="10000000/1" trackRect="(0,0,1364,768)" sampleRate="10000000/333333" bitDepth="24" numChannels="0" filename="menu2.camrec!Screen_Stream.avi" metaData="menu2.camrec!Events.dat;menu2.camrec!manifest.camxml;" />
       <SourceTrack range="(0,3239000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="22050/1" bitDepth="16" numChannels="1" filename="menu2.camrec!Screen_Stream.avi" metaData="" />
       <SourceTrack range="(0,3243333333)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="44100/1" bitDepth="16" numChannels="2" filename="menu2.camrec!SysAudio.wav" metaData="" />
     </Source>
-    <Source id="7" src="C:\Users\Scott\IECS\screencasts\Unit 3 Days 15-16 Lists Menus Tables\menu3.camrec" lastMod="20130910T212157" rect="(0,0,1364,768)" >
+    <Source id="7" src="C:\Users\Fangy\Desktop\menu3.camrec" lastMod="20130910T222158" rect="(0,0,1364,768)" >
       <SourceTrack range="(0,1206333333)" type="0" editRate="10000000/1" trackRect="(0,0,1364,768)" sampleRate="10000000/333333" bitDepth="24" numChannels="0" filename="menu3.camrec!Screen_Stream.avi" metaData="menu3.camrec!Events.dat;menu3.camrec!manifest.camxml;" />
       <SourceTrack range="(0,1209000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="22050/1" bitDepth="16" numChannels="1" filename="menu3.camrec!Screen_Stream.avi" metaData="" />
       <SourceTrack range="(0,1212000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="44100/1" bitDepth="16" numChannels="2" filename="menu3.camrec!SysAudio.wav" metaData="" />
     </Source>
-    <Source id="8" src="C:\Users\Scott\IECS\screencasts\Unit 3 Days 15-16 Lists Menus Tables\menu4.camrec" lastMod="20130910T212759" rect="(0,0,1364,768)" >
+    <Source id="8" src="C:\Users\Fangy\Desktop\menu4.camrec" lastMod="20130910T222800" rect="(0,0,1364,768)" >
       <SourceTrack range="(0,2033666667)" type="0" editRate="10000000/1" trackRect="(0,0,1364,768)" sampleRate="10000000/333333" bitDepth="24" numChannels="0" filename="menu4.camrec!Screen_Stream.avi" metaData="menu4.camrec!Events.dat;menu4.camrec!manifest.camxml;" />
       <SourceTrack range="(0,2035000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="22050/1" bitDepth="16" numChannels="1" filename="menu4.camrec!Screen_Stream.avi" metaData="" />
       <SourceTrack range="(0,2036666667)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="44100/1" bitDepth="16" numChannels="2" filename="menu4.camrec!SysAudio.wav" metaData="" />
     </Source>
-    <Source id="9" src="C:\Users\Scott\IECS\screencasts\Unit 3 Days 15-16 Lists Menus Tables\menu5.camrec" lastMod="20130910T213135" rect="(0,0,1364,768)" >
+    <Source id="9" src="C:\Users\Fangy\Desktop\menu5.camrec" lastMod="20130910T223136" rect="(0,0,1364,768)" >
       <SourceTrack range="(0,1704000000)" type="0" editRate="10000000/1" trackRect="(0,0,1364,768)" sampleRate="10000000/333333" bitDepth="24" numChannels="0" filename="menu5.camrec!Screen_Stream.avi" metaData="menu5.camrec!Events.dat;menu5.camrec!manifest.camxml;" />
       <SourceTrack range="(0,1705000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="22050/1" bitDepth="16" numChannels="1" filename="menu5.camrec!Screen_Stream.avi" metaData="" />
       <SourceTrack range="(0,1709666667)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="44100/1" bitDepth="16" numChannels="2" filename="menu5.camrec!SysAudio.wav" metaData="" />
     </Source>
-    <Source id="10" src="C:\Users\Scott\IECS\screencasts\Unit 3 Days 15-16 Lists Menus Tables\menu6.camrec" lastMod="20130910T213728" rect="(0,0,1364,768)" >
+    <Source id="10" src="C:\Users\Fangy\Desktop\menu6.camrec" lastMod="20130910T223730" rect="(0,0,1364,768)" >
       <SourceTrack range="(0,1860333333)" type="0" editRate="10000000/1" trackRect="(0,0,1364,768)" sampleRate="10000000/333333" bitDepth="24" numChannels="0" filename="menu6.camrec!Screen_Stream.avi" metaData="menu6.camrec!Events.dat;menu6.camrec!manifest.camxml;" />
       <SourceTrack range="(0,1862000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="22050/1" bitDepth="16" numChannels="1" filename="menu6.camrec!Screen_Stream.avi" metaData="" />
       <SourceTrack range="(0,1865333333)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="44100/1" bitDepth="16" numChannels="2" filename="menu6.camrec!SysAudio.wav" metaData="" />
     </Source>
-    <Source id="11" src="C:\Users\Scott\IECS\screencasts\Unit 3 Days 15-16 Lists Menus Tables\menu8.camrec" lastMod="20130912T195156" rect="(0,0,1364,768)" >
+    <Source id="11" src="C:\Users\Fangy\Desktop\menu8.camrec" lastMod="20130912T205158" rect="(0,0,1364,768)" >
       <SourceTrack range="(0,317333333)" type="0" editRate="10000000/1" trackRect="(0,0,1364,768)" sampleRate="10000000/333333" bitDepth="24" numChannels="0" filename="menu8.camrec!Screen_Stream.avi" metaData="menu8.camrec!Events.dat;menu8.camrec!manifest.camxml;" />
       <SourceTrack range="(0,319000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="22050/1" bitDepth="16" numChannels="1" filename="menu8.camrec!Screen_Stream.avi" metaData="" />
       <SourceTrack range="(0,322000000)" type="2" editRate="10000000/1" trackRect="(0,0,0,0)" sampleRate="44100/1" bitDepth="16" numChannels="2" filename="menu8.camrec!SysAudio.wav" metaData="" />
@@ -1548,7 +1548,7 @@
           <Entry key="ZoomPanBin">
            <ZoomPanBin id="833"  >
             <ZoomPanKeyframes>
-             <ZoomPanKeyframe id="834" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+             <ZoomPanKeyframe id="834" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
             </ZoomPanKeyframes>
            </ZoomPanBin>
           </Entry>
@@ -1625,7 +1625,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="874"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="875" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="875" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -1693,7 +1693,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="912"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="913" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="913" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -1761,7 +1761,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="950"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="951" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="951" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -1829,7 +1829,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="988"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="989" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="989" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -1897,7 +1897,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1026"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1027" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1027" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -1965,7 +1965,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1064"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1065" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1065" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2128,7 +2128,7 @@
           <Entry key="ZoomPanBin">
            <ZoomPanBin id="1150"  >
             <ZoomPanKeyframes>
-             <ZoomPanKeyframe id="1151" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+             <ZoomPanKeyframe id="1151" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
             </ZoomPanKeyframes>
            </ZoomPanBin>
           </Entry>
@@ -2205,7 +2205,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1191"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1192" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1192" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2273,7 +2273,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1229"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1230" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1230" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2341,7 +2341,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1267"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1268" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1268" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2409,7 +2409,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1305"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1306" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1306" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2477,7 +2477,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1343"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1344" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1344" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2545,7 +2545,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1381"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1382" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1382" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2613,7 +2613,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1419"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1420" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1420" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2681,7 +2681,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1457"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1458" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1458" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2750,7 +2750,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1496"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1497" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1497" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
@@ -2818,7 +2818,7 @@
              <Entry key="ZoomPanBin">
               <ZoomPanBin id="1534"  >
                <ZoomPanKeyframes>
-                <ZoomPanKeyframe id="1535" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName=""  />
+                <ZoomPanKeyframe id="1535" timeRangeEnd="-9999999/1" timeRangeDuration="0/1" interpolaterName="linr"  />
                </ZoomPanKeyframes>
               </ZoomPanBin>
              </Entry>
