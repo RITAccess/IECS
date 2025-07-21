@@ -5,4 +5,4 @@ This repository is where we are storing materials for the Inclusive Exploring Co
 
 Inclusive Exploring Computer Science is an adaptation of the Exploring Computer Science program, with an emphasis on making the material more accessible to students that have visual impairments. 
 
-More information can be found on our website: http://iecs.se.rit.edu/iecs/
+
